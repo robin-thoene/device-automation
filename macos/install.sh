@@ -150,6 +150,7 @@ brew install --cask postman
 brew install --cask azure-data-studio
 brew install --cask mysqlworkbench
 brew install --cask redisinsight
+brew install --cask podman-desktop
 echo "Done."
 
 #################
