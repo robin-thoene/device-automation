@@ -84,14 +84,13 @@ if ! brew list zsh &>/dev/null; then
 fi
 echo "Done."
 
-
 ###############
 ### Set aliases
 ###############
 
-echo 'alias gfc="git fetch && git checkout"' >> ~/.zshrc
-echo 'alias startdev="podman machine start && podman start storage-dev redis-dev mssql-dev"' >> ~/.zshrc
-echo 'alias stopdev="podman stop storage-dev redis-dev mssql-dev && podman machine stop"' >> ~/.zshrc
+echo 'alias gfc="git fetch && git checkout"' >>~/.zshrc
+echo 'alias startdev="podman machine start && podman start storage-dev redis-dev mssql-dev"' >>~/.zshrc
+echo 'alias stopdev="podman stop storage-dev redis-dev mssql-dev && podman machine stop"' >>~/.zshrc
 
 ###########
 ### Browser
