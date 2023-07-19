@@ -10,9 +10,12 @@ sudo -v
 # Ask user for required information.
 read -p "Enter your work company name: " company_name
 # Define needed variables.
-git_user_dir=~/dev/robin-thoene
+git_user_name=robin-thoene
+git_automation_repo_name=device-automation
+git_user_dir=~/dev/$git_user_name
 git_company_dir=~/dev/$company_name
 git_dracula_dir=~/dev/dracula
+automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
 # Create the directory to store git repos.
 mkdir -p $git_user_dir
 mkdir -p $git_company_dir
@@ -65,6 +68,12 @@ echo "Installing git..."
 brew install git
 echo "Done."
 
+#############################
+### Clone the automation repo
+#############################
+
+cd $git_user_dir && git clone $automation_repo_git_url
+
 ###############
 ### Install ZSH
 ###############
@@ -81,6 +90,7 @@ if ! brew list zsh &>/dev/null; then
     ln -s $git_dracula_dir/zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
     # Activate the dracula theme.
     sed -i '' 's/robbyrussell/dracula/g' ~/.zshrc
+    echo 'export DRACULA_DISPLAY_NEW_LINE=1' >>~/.zshrc
 fi
 echo "Done."
 
@@ -91,6 +101,7 @@ echo "Done."
 echo 'alias gfc="git fetch && git checkout"' >>~/.zshrc
 echo 'alias startdev="podman machine start && podman start storage-dev redis-dev mssql-dev"' >>~/.zshrc
 echo 'alias stopdev="podman stop storage-dev redis-dev mssql-dev && podman machine stop"' >>~/.zshrc
+echo 'alias update_all="./dev/'"$git_user_name"'/'"$git_automation_repo_name"'/macos/update.sh"' >>~/.zshrc
 
 ###########
 ### Browser
@@ -211,5 +222,9 @@ mas install 417375580
 mas install 985367838
 echo "Done."
 
-read -p "Please start iterm2 and set the dracula color theme."
+read -p "Please start iterm2 and import light and dark mode color themes."
+read -p "Please setup automatic theme switch script for iterm2 (https://iterm2.com/python-api/examples/theme.html)."
 read -p "Please set iterm2 as default terminal."
+
+# Set the iterm2 color themes that are imported in the automatic theme switch script.
+sed -i '' 's/Dark Background/Dracula/g' ~/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/theme/theme/theme.py && sed -i '' 's/Light Background/iterm2_light/g' ~/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/theme/theme/theme.py
