@@ -120,7 +120,6 @@ echo "Installing utility packages..."
 brew install --cask macpass
 brew install --cask inkscape
 brew install --cask teamviewer
-brew tap homebrew/cask-drivers
 brew install logitech-options
 brew install --cask gyazo
 brew install --cask iterm2
