@@ -79,14 +79,15 @@ git config --global user.name "$git_author_name"
 git config --global user.email "$git_author_email"
 echo "Done."
 
-#################################
-# Dracula theme for the terminal.
-#################################
+###########################
+# Kitty with Dracula theme.
+###########################
 
-echo "Configure Dracula theme for the terminal..."
-apt-get install -y dconf-cli
-cd $git_dracula_dir && git clone https://github.com/dracula/gnome-terminal && cd gnome-terminal
-./install.sh -s Dracula --skip-dircolors
+echo "Install kitty terminal and configure Dracula theme..."
+apt-get install -y kitty
+cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
+cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
+echo "include dracula.conf" >> ~/.config/kitty/kitty.conf
 echo "Done."
 
 #############################
