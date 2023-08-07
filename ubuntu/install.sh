@@ -167,8 +167,6 @@ snap install --classic rider
 snap install storage-explorer
 snap connect storage-explorer:password-manager-service :password-manager-service
 snap install postman
-snap install mysql-workbench-community
-snap connect mysql-workbench-community:password-manager-service
 echo "Done."
 
 #################
