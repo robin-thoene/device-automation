@@ -122,9 +122,7 @@ brew install --cask inkscape
 brew install --cask teamviewer
 brew install logitech-options
 brew install --cask gyazo
-brew install --cask iterm2
-# Download the dracula theme for iterm2.
-cd $git_dracula_dir && git clone https://github.com/dracula/iterm.git
+brew install --cask kitty
 brew install --cask nordvpn
 brew install --cask alfred
 brew install --cask logseq
@@ -225,10 +223,3 @@ mas install 417375580
 # Install Outlook from app store.
 mas install 985367838
 echo "Done."
-
-read -p "Please start iterm2 and import light and dark mode color themes."
-read -p "Please setup automatic theme switch script for iterm2 (https://iterm2.com/python-api/examples/theme.html)."
-read -p "Please set iterm2 as default terminal."
-
-# Set the iterm2 color themes that are imported in the automatic theme switch script.
-sed -i '' 's/Dark Background/Dracula/g' ~/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/theme/theme/theme.py && sed -i '' 's/Light Background/iterm2_light/g' ~/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/theme/theme/theme.py
