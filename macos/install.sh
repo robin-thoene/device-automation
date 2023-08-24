@@ -128,6 +128,11 @@ cd $git_dracula_dir && git clone https://github.com/dracula/iterm.git
 brew install --cask nordvpn
 brew install --cask alfred
 brew install --cask logseq
+# Setup fuzzy finder for command line.
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/dev/fzf
+cd ~/dev/fzf
+./install --all --key-bindings --completion
+echo -e 'bindkey "\u00e7" fzf-cd-widget' >>~/.zshrc
 echo "Done."
 
 ###############
