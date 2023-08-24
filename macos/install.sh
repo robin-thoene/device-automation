@@ -68,6 +68,17 @@ echo "Installing git..."
 brew install git
 echo "Done."
 
+###########################
+# Kitty with Dracula theme.
+###########################
+
+echo "Install kitty terminal and configure Dracula theme..."
+brew install --cask kitty
+cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
+cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
+echo "include dracula.conf" >> ~/.config/kitty/kitty.conf
+echo "Done."
+
 #############################
 ### Clone the automation repo
 #############################
@@ -122,7 +133,6 @@ brew install --cask inkscape
 brew install --cask teamviewer
 brew install logitech-options
 brew install --cask gyazo
-brew install --cask kitty
 brew install --cask nordvpn
 brew install --cask alfred
 brew install --cask logseq
