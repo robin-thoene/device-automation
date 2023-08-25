@@ -73,10 +73,18 @@ echo "Done."
 ###########################
 
 echo "Install kitty terminal and configure Dracula theme..."
+brew tap homebrew/cask-fonts
+brew install font-jetbrains-mono-nerd-font
 brew install --cask kitty
 cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
 cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
-echo "include dracula.conf" >> ~/.config/kitty/kitty.conf
+echo "include dracula.conf" >>~/.config/kitty/kitty.conf
+echo "background_opacity 0.95" >>~/.config/kitty/kitty.conf
+echo "
+font_family      JetBrainsMono Nerd Font Mono Regular
+italic_font      JetBrainsMono Nerd Font Mono Italic
+bold_font        JetBrainsMono Nerd Font Mono Bold
+bold_italic_font JetBrainsMono Nerd Font Mono Bold Italic" >>~/.config/kitty/kitty.conf
 echo "Done."
 
 #############################
@@ -233,3 +241,9 @@ mas install 417375580
 # Install Outlook from app store.
 mas install 985367838
 echo "Done."
+
+##############
+# Manual steps
+##############
+
+read -p "Set the default OS font to JetBrains Mono NF Regular. Press enter to complete..."
