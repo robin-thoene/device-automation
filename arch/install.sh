@@ -45,10 +45,16 @@ echo "Done."
 ###########################
 
 echo "Install kitty terminal and configure Dracula theme..."
+sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 sudo pacman -S kitty --noconfirm
 cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
 cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
 echo "include dracula.conf" >> ~/.config/kitty/kitty.conf
+echo "
+font_family      JetBrainsMono NF Regular
+italic_font      JetBrainsMono NF Italic
+bold_font        JetBrainsMono NF Bold
+bold_italic_font JetBrainsMono NF Bold Italic" >> ~/.config/kitty/kitty.conf
 echo "Done."
 
 #############################
@@ -161,3 +167,9 @@ yay -S visual-studio-code-bin --noconfirm
 yay -S postman-bin --noconfirm
 yay -S logseq-desktop-bin --noconfirm
 echo "Done."
+
+##############
+# Manual steps
+##############
+
+read -p "Set the default OS font to JetBrains Mono NF Regular. Press enter to complete..."
