@@ -109,6 +109,21 @@ echo "if [ -x /usr/bin/fzf  ]
 fi" >>~/.zshrc
 echo "Done."
 
+#########
+### LaTeX
+#########
+
+sudo pacman -S texlive-basic --noconfirm
+sudo pacman -S texlive-bin --noconfirm
+sudo pacman -S texlive-binextra --noconfirm
+texlive-fontsextra --noconfirm
+sudo pacman -S texlive-fontsrecommended --noconfirm
+sudo pacman -S texlive-langgerman --noconfirm
+sudo pacman -S texlive-latex --noconfirm
+sudo pacman -S texlive-latexextra --noconfirm
+sudo pacman -S texlive-latexrecommended --noconfirm
+sudo pacman -S texlive-pictures --noconfirm
+
 #################
 ### Communication
 #################
