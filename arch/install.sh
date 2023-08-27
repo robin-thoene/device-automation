@@ -29,6 +29,16 @@ echo "Your password is required once for installing packages:"
 sudo pacman -Syu --noconfirm
 echo "Done."
 
+###################################
+### Apply operating system settings
+###################################
+
+echo "Applying operating system settings..."
+# Install needed fonts.
+sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
+sudo pacman -S noto-fonts-emoji --noconfirm
+echo "Done."
+
 ################
 ### Install git.
 ################
@@ -45,7 +55,6 @@ echo "Done."
 ###########################
 
 echo "Install kitty terminal and configure Dracula theme..."
-sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 sudo pacman -S kitty --noconfirm
 cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
 cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
