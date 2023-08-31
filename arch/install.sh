@@ -28,6 +28,7 @@ mkdir -p $git_dracula_dir
 
 echo "Update installed packages..."
 echo "Your password is required once for installing packages:"
+sudo pacman-mirrors --fasttrack
 sudo pacman -Syu --noconfirm
 echo "Done."
 
@@ -50,22 +51,6 @@ sudo pacman -S git --noconfirm
 git config --global credential.helper store
 git config --global user.name "$git_author_name"
 git config --global user.email "$git_author_email"
-echo "Done."
-
-###########################
-# Kitty with Dracula theme.
-###########################
-
-echo "Install kitty terminal and configure Dracula theme..."
-sudo pacman -S kitty --noconfirm
-cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
-cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
-echo "include dracula.conf" >>~/.config/kitty/kitty.conf
-echo "
-font_family      JetBrainsMono NF Regular
-italic_font      JetBrainsMono NF Italic
-bold_font        JetBrainsMono NF Bold
-bold_italic_font JetBrainsMono NF Bold Italic" >>~/.config/kitty/kitty.conf
 echo "Done."
 
 #############################
@@ -171,8 +156,6 @@ dotnet tool install --global PowerShell
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
 echo 'export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'>>~/.config/zsh/.zshrc
-source ~/.config/zsh/.zshrc
-nvm install --lts
 
 # CLI
 sudo pacman -S yarn --noconfirm
