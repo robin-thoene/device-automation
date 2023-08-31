@@ -99,6 +99,7 @@ sudo pacman -S keepass --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
+sudo pacman -S brightnessctl --noconfirm
 echo "if [ -x /usr/bin/fzf  ]
         then
                 source /usr/share/fzf/key-bindings.zsh
