@@ -40,6 +40,8 @@ echo "Applying operating system settings..."
 # Install needed fonts.
 sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 sudo pacman -S noto-fonts-emoji --noconfirm
+# Remove clipboard history.
+sudo pacman -R cliphist --noconfirm
 echo "Done."
 
 ################
@@ -100,6 +102,8 @@ sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
 sudo pacman -S brightnessctl --noconfirm
+sudo pacman -S gnome-keyring --noconfirm
+sudo pacman -S gnome-keyring --noconfirm
 echo "if [ -x /usr/bin/fzf  ]
         then
                 source /usr/share/fzf/key-bindings.zsh
@@ -156,7 +160,7 @@ dotnet tool install --global PowerShell
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
 echo 'export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'>>~/.config/zsh/.zshrc
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >>~/.config/zsh/.zshrc
 
 # CLI
 sudo pacman -S yarn --noconfirm
