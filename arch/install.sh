@@ -40,6 +40,7 @@ echo "Applying operating system settings..."
 # Install needed fonts.
 sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 sudo pacman -S noto-fonts-emoji --noconfirm
+sudo pacman -S pkgconf --noconfirm
 # Remove clipboard history.
 sudo pacman -R cliphist --noconfirm
 echo "Done."
@@ -181,9 +182,14 @@ echo 'export NVM_DIR="$HOME/.nvm"
 
 # CLI
 sudo pacman -S yarn --noconfirm
+sudo pacman -S pnpm --noconfirm
 sudo pacman -S podman --noconfirm
 curl -L https://aka.ms/InstallAzureCli | sh
 sudo pacman -S nuget --noconfirm
+
+# Rust
+sudo pacman -S rustup --noconfirm
+rustup default stable
 
 # Tools
 sudo pacman -S mysql-workbench --noconfirm
