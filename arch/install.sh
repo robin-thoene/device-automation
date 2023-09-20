@@ -170,6 +170,7 @@ echo "Installing development packages..."
 
 # Dotnet
 sudo pacman -S dotnet-sdk --noconfirm
+sudo pacman -S aspnet-runtime --noconfirm
 dotnet tool install --global dotnet-ef
 
 # PWSH
