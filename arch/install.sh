@@ -41,6 +41,9 @@ echo "Applying operating system settings..."
 sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 sudo pacman -S noto-fonts-emoji --noconfirm
 sudo pacman -S pkgconf --noconfirm
+# Setup applications directory.
+mkdir -p ~/Applications
+sudo ln -s /home/robin/Applications /usr/bin
 # Remove clipboard history.
 sudo pacman -R cliphist --noconfirm
 echo "Done."
