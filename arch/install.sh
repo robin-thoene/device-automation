@@ -118,6 +118,7 @@ echo 'alias update_all="~/dev/'"$git_user_name"'/'"$git_automation_repo_name"'/a
 ###########
 
 echo "Installing utility packages..."
+sudo pacman -S nsxiv --noconfirm
 sudo pacman -S keepass --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
