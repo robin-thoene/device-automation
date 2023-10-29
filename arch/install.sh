@@ -97,21 +97,9 @@ else
     chsh -s $(which zsh)
     # Install the dracula theme.
     cd $git_dracula_dir && git clone https://github.com/dracula/zsh.git
-    ln -s $git_dracula_dir/zsh/dracula.zsh-theme ~/.config/zsh/oh-my-zsh/themes/dracula.zsh-theme
-    # Activate the dracula theme.
-    sed -i 's/robbyrussell/dracula/g' ~/.config/zsh/.zshrc
-    echo 'export DRACULA_DISPLAY_NEW_LINE=1' >>~/.config/zsh/.zshrc
+    ln -s $git_dracula_dir/zsh/dracula.zsh-theme ~/.config/zsh/ohmyzsh/themes/dracula.zsh-theme
 fi
 echo "Done."
-
-###############
-### Set aliases
-###############
-
-echo 'alias gfc="git fetch && git checkout"' >>~/.config/zsh/.zshrc
-echo 'alias startdev="podman machine start && podman start storage-dev redis-dev mssql-dev"' >>~/.config/zsh/.zshrc
-echo 'alias stopdev="podman stop storage-dev redis-dev mssql-dev && podman machine stop"' >>~/.config/zsh/.zshrc
-echo 'alias update_all="~/dev/'"$git_user_name"'/'"$git_automation_repo_name"'/arch/update.sh"' >>~/.config/zsh/.zshrc
 
 ###########
 ### Utility
@@ -126,10 +114,6 @@ sudo pacman -S fzf --noconfirm
 sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
-echo "if [ -x /usr/bin/fzf  ]
-        then
-                source /usr/share/fzf/key-bindings.zsh
-fi" >>~/.config/zsh/.zshrc
 echo "Done."
 
 #########
@@ -182,8 +166,6 @@ dotnet tool install --global PowerShell
 
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
-echo 'export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >>~/.config/zsh/.zshrc
 
 # CLI
 sudo pacman -S yarn --noconfirm
