@@ -193,9 +193,3 @@ yay -S visual-studio-code-bin --noconfirm
 yay -S postman-bin --noconfirm
 yay -S logseq-desktop-bin --noconfirm
 echo "Done."
-
-##############
-# Manual steps
-##############
-
-read -p "Set the default OS font to JetBrains Mono NF Regular. Press enter to complete..."
