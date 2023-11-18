@@ -56,16 +56,19 @@ echo "Downloading Dracula GTK theme..."
 # Theme
 curl -fsSL -o ~/Downloads/Dracula.zip https://github.com/dracula/gtk/archive/master.zip
 unzip ~/Downloads/Dracula.zip -d ~/Downloads/
-mkdir ~/.themes
+mkdir -p ~/.themes
 sudo mv ~/Downloads/gtk-master ~/.themes/Dracula
 rm ~/Downloads/Dracula.zip
 # Icons
 curl -fsSL -o ~/Downloads/Dracula-Icons.zip https://github.com/dracula/gtk/files/5214870/Dracula.zip
 unzip ~/Downloads/Dracula-Icons.zip -d ~/Downloads/
-mkdir ~/.icons
+mkdir -p ~/.icons
 sudo mv ~/Downloads/Dracula ~/.icons/Dracula
 rm ~/Downloads/Dracula-Icons.zip
 echo "Done."
+# Ensure Kvantum can use the Dracula theme as well.
+mkdir -p ~/.config/Kvantum 
+ln -s ~/.themes/Dracula/kde/kvantum/Dracula ~/.config/Kvantum/Dracula
 
 ################
 ### Install git.
