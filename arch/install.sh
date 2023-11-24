@@ -67,7 +67,7 @@ sudo mv ~/Downloads/Dracula ~/.icons/Dracula
 rm ~/Downloads/Dracula-Icons.zip
 echo "Done."
 # Ensure Kvantum can use the Dracula theme as well.
-mkdir -p ~/.config/Kvantum 
+mkdir -p ~/.config/Kvantum
 ln -s ~/.themes/Dracula/kde/kvantum/Dracula ~/.config/Kvantum/Dracula
 
 ################
@@ -128,7 +128,7 @@ echo "Done."
 sudo pacman -S texlive-basic --noconfirm
 sudo pacman -S texlive-bin --noconfirm
 sudo pacman -S texlive-binextra --noconfirm
-texlive-fontsextra --noconfirm
+sudo pacman -S texlive-fontsextra --noconfirm
 sudo pacman -S texlive-fontsrecommended --noconfirm
 sudo pacman -S texlive-langgerman --noconfirm
 sudo pacman -S texlive-latex --noconfirm
@@ -185,6 +185,7 @@ rustup default stable
 
 # Tools
 sudo pacman -S mysql-workbench --noconfirm
+sudo pacman -S nvim --noconfirm
 
 echo "Done."
 
@@ -197,4 +198,5 @@ sudo pacman -S yay --noconfirm
 yay -S visual-studio-code-bin --noconfirm
 yay -S postman-bin --noconfirm
 yay -S logseq-desktop-bin --noconfirm
+yay -S alacritty-git --noconfirm
 echo "Done."
