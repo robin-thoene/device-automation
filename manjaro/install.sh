@@ -155,6 +155,8 @@ echo "Done."
 
 echo "Installing media packages..."
 sudo pacman -S vlc --noconfirm
+sudo pacman -S steam --noconfirm
+sudo pacman -S mgba-qt --noconfirm
 echo "Done."
 
 ###############
