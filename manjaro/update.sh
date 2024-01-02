@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Update all arch packages.
+# Update all packages.
 sudo pacman -Syu --noconfirm
 # Update all AUR packages.
 yay -Syu --noconfirm

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This script installs and configures my Arch Linux with sway setup.
+# This script installs and configures my Manjaro Linux with sway setup.
 
 #################
 ### Initial setup
@@ -111,6 +111,7 @@ echo "Done."
 ###########
 
 echo "Installing utility packages..."
+sudo pacman -S alacritty --noconfirm
 sudo pacman -S nsxiv --noconfirm
 sudo pacman -S keepass --noconfirm
 sudo pacman -S veracrypt --noconfirm
@@ -118,7 +119,8 @@ sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
 sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
-sudo pacman -S gnome-keyring --noconfirm
+sudo pacman -S seahorse --noconfirm
+sudo pacman -S ifuse --noconfirm
 echo "Done."
 
 #########
@@ -198,5 +200,4 @@ sudo pacman -S yay --noconfirm
 yay -S visual-studio-code-bin --noconfirm
 yay -S postman-bin --noconfirm
 yay -S logseq-desktop-bin --noconfirm
-yay -S alacritty-git --noconfirm
 echo "Done."
