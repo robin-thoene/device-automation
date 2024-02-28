@@ -155,7 +155,6 @@ nvm install --lts
 # CLI
 npm install --global yarn
 apt-get install -y podman
-wget -qO- https://aka.ms/InstallAzureCLIDeb | bash
 apt-get install -y nuget
 snap install --classic powershell
 

@@ -180,7 +180,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
 sudo pacman -S yarn --noconfirm
 sudo pacman -S pnpm --noconfirm
 sudo pacman -S podman --noconfirm
-curl -L https://aka.ms/InstallAzureCli | sh
 sudo pacman -S nuget --noconfirm
 
 # Rust
