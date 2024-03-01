@@ -188,7 +188,7 @@ rustup default stable
 
 # Tools
 sudo pacman -S mysql-workbench --noconfirm
-sudo pacman -S nvim --noconfirm
+sudo pacman -S neovim --noconfirm
 
 echo "Done."
 
