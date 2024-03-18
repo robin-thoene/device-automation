@@ -117,10 +117,12 @@ sudo pacman -S keepass --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
+sudo pacman -S ripgrep --noconfirm
 sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
 sudo pacman -S seahorse --noconfirm
 sudo pacman -S ifuse --noconfirm
+sudo pacman -S neofetch --noconfirm
 echo "Done."
 
 #########
@@ -189,6 +191,7 @@ rustup default stable
 # Tools
 sudo pacman -S mysql-workbench --noconfirm
 sudo pacman -S neovim --noconfirm
+sudo pacman -S gitui --noconfirm
 
 echo "Done."
 
