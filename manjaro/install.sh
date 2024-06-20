@@ -183,6 +183,7 @@ sudo pacman -S yarn --noconfirm
 sudo pacman -S pnpm --noconfirm
 sudo pacman -S podman --noconfirm
 sudo pacman -S nuget --noconfirm
+sudo pacman -S gitleaks --noconfirm
 
 # Rust
 sudo pacman -S rustup --noconfirm
