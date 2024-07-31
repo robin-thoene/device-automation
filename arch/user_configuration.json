@@ -105,7 +105,14 @@
   "offline": false,
   "packages": [
     "firefox",
-    "neovim"
+    "foot",
+    "libva-mesa-driver",
+    "mesa",
+    "mesa-utils",
+    "neovim",
+    "polkit",
+    "sway",
+    "vulkan-intel"
   ],
   "parallel downloads": 0,
   "profile_config": {
