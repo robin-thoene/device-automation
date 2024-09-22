@@ -117,6 +117,7 @@ sudo pacman -S keepass --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
+sudo pacman -S fd --noconfirm
 sudo pacman -S ripgrep --noconfirm
 sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
