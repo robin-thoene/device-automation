@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script installs and configures my macOS setup for working environments.
+
 #################
 ### Initial setup
 #################
@@ -14,12 +16,9 @@ git_user_name=robin-thoene
 git_automation_repo_name=device-automation
 git_user_dir=~/dev/$git_user_name
 git_company_dir=~/dev/$company_name
-git_dracula_dir=~/dev/dracula
-automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
 # Create the directory to store git repos.
 mkdir -p $git_user_dir
 mkdir -p $git_company_dir
-mkdir -p $git_dracula_dir
 
 ###################################
 ### Apply operating system settings
@@ -56,8 +55,6 @@ echo "Done."
 echo "Installing blocking packages please stay here and enter credentials as needed..."
 brew install --cask dotnet-sdk
 brew install --cask microsoft-teams
-brew install --cask mactex
-brew install --cask microsoft-word
 echo "Done. You can now go and let the script install the rest."
 
 ################
@@ -67,31 +64,6 @@ echo "Done. You can now go and let the script install the rest."
 echo "Installing git..."
 brew install git
 echo "Done."
-
-###########################
-# Kitty with Dracula theme.
-###########################
-
-echo "Install kitty terminal and configure Dracula theme..."
-brew tap homebrew/cask-fonts
-brew install font-jetbrains-mono-nerd-font
-brew install --cask kitty
-cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
-cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
-echo "include dracula.conf" >>~/.config/kitty/kitty.conf
-echo "background_opacity 0.95" >>~/.config/kitty/kitty.conf
-echo "
-font_family      JetBrainsMono Nerd Font Mono Regular
-italic_font      JetBrainsMono Nerd Font Mono Italic
-bold_font        JetBrainsMono Nerd Font Mono Bold
-bold_italic_font JetBrainsMono Nerd Font Mono Bold Italic" >>~/.config/kitty/kitty.conf
-echo "Done."
-
-#############################
-### Clone the automation repo
-#############################
-
-cd $git_user_dir && git clone $automation_repo_git_url
 
 ###############
 ### Install ZSH
@@ -104,23 +76,8 @@ if ! brew list zsh &>/dev/null; then
     brew install zsh
     # Install Oh My Zsh.
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    # Install the dracula theme.
-    cd $git_dracula_dir && git clone https://github.com/dracula/zsh.git
-    ln -s $git_dracula_dir/zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
-    # Activate the dracula theme.
-    sed -i '' 's/robbyrussell/dracula/g' ~/.zshrc
-    echo 'export DRACULA_DISPLAY_NEW_LINE=1' >>~/.zshrc
 fi
 echo "Done."
-
-###############
-### Set aliases
-###############
-
-echo 'alias gfc="git fetch && git checkout"' >>~/.zshrc
-echo 'alias startdev="podman machine start && podman start storage-dev redis-dev mssql-dev"' >>~/.zshrc
-echo 'alias stopdev="podman stop storage-dev redis-dev mssql-dev && podman machine stop"' >>~/.zshrc
-echo 'alias update_all="./dev/'"$git_user_name"'/'"$git_automation_repo_name"'/macos/update.sh"' >>~/.zshrc
 
 ###########
 ### Browser
@@ -136,19 +93,11 @@ echo "Done."
 ###########
 
 echo "Installing utility packages..."
-brew install --cask macpass
-brew install --cask inkscape
-brew install --cask teamviewer
 brew install logitech-options
-brew install --cask gyazo
-brew install --cask nordvpn
-brew install --cask alfred
-brew install --cask logseq
-# Setup fuzzy finder for command line.
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/dev/fzf
-cd ~/dev/fzf
-./install --all --key-bindings --completion
-echo -e 'bindkey "\u00e7" fzf-cd-widget' >>~/.zshrc
+brew install --cask alacritty
+brew install fzf
+brew install fd
+brew install ripgrep
 echo "Done."
 
 ###############
@@ -159,47 +108,27 @@ echo "Installing development packages..."
 # CLI
 brew install --cask powershell
 brew install nvm
-# Add nvm path to shells.
-echo "export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"" >>~/.zshrc
-# Reload shells.
-source ~/.zshrc
 # Install latest LTS version of node.
 nvm install --lts
 brew install yarn
 brew install podman
 brew install azure-cli
 brew install nuget
-brew tap azure/bicep
-brew install bicep
-brew install rbenv ruby-build
-brew install cocoapods
+brew install gitleaks
 
 # SDK
 dotnet tool install --global dotnet-ef
-brew install openjdk
 
 # IDE / Editor
-brew install --cask visual-studio-code
-brew install --cask rider
+brew install neovim
 
 # Tools
 brew install --cask microsoft-azure-storage-explorer
 brew install --cask postman
 brew install --cask azure-data-studio
-brew install --cask mysqlworkbench
 brew install --cask redisinsight
 brew install --cask podman-desktop
-echo "Done."
-
-#################
-### Communication
-#################
-
-echo "Installing communication packages..."
-brew install --cask thunderbird
-brew install --cask discord
-brew install --cask signal
+brew install gitui
 echo "Done."
 
 #########
@@ -207,39 +136,7 @@ echo "Done."
 #########
 
 echo "Installing media packages..."
-brew install --cask spotify
 brew install --cask vlc
-echo "Done."
-
-################
-### Office Tools
-################
-
-echo "Installing office tools..."
-brew install --cask texmaker
-brew install --cask microsoft-excel
-brew install --cask microsoft-powerpoint
-brew install --cask onedrive
-echo "Done."
-
-###########
-# App Store
-###########
-
-read -p "Sign in to App Store and press ENTER to continue..."
-
-echo "Installing App Store packages..."
-# Install command line tool for app store
-brew install mas
-
-# Install XCode from app store.
-mas install 497799835
-# Install ColorSlurp from app store.
-mas install 1287239339
-# Install better snap tool from app store.
-mas install 417375580
-# Install Outlook from app store.
-mas install 985367838
 echo "Done."
 
 ##############
