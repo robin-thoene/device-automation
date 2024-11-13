@@ -107,7 +107,7 @@ echo "Done."
 echo "Installing development packages..."
 # CLI
 brew install --cask powershell
-brew install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # Install latest LTS version of node.
 nvm install --lts
 brew install yarn
@@ -120,6 +120,7 @@ brew install gitleaks
 dotnet tool install --global dotnet-ef
 
 # IDE / Editor
+brew install --cask font-jetbrains-mono-nerd-font
 brew install neovim
 
 # Tools
@@ -143,4 +144,5 @@ echo "Done."
 # Manual steps
 ##############
 
-read -p "Set the default OS font to JetBrains Mono NF Regular. Press enter to complete..."
+read -p "Get the dotfiles"
+read -p "Set the default alacritty font to JetBrainsMono Nerd Font. Press enter to complete..."
