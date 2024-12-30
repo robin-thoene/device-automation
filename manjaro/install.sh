@@ -174,6 +174,7 @@ sudo pacman -S rustup --noconfirm
 rustup default stable
 
 # Tools
+sudo pacman -S tmux --noconfirm
 sudo pacman -S mysql-workbench --noconfirm
 sudo pacman -S neovim --noconfirm
 sudo pacman -S tree-sitter-cli --noconfirm
