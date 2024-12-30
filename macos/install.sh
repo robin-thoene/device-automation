@@ -111,7 +111,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # Install latest LTS version of node.
 nvm install --lts
 brew install yarn
-brew install podman
+brew install docker
 brew install azure-cli
 brew install nuget
 brew install gitleaks
@@ -128,7 +128,6 @@ brew install --cask microsoft-azure-storage-explorer
 brew install --cask postman
 brew install --cask azure-data-studio
 brew install --cask redisinsight
-brew install --cask podman-desktop
 brew install gitui
 echo "Done."
 

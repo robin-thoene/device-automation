@@ -165,7 +165,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
 # CLI
 sudo pacman -S yarn --noconfirm
 sudo pacman -S pnpm --noconfirm
-sudo pacman -S podman --noconfirm
+sudo pacman -S docker --noconfirm
 sudo pacman -S nuget --noconfirm
 sudo pacman -S gitleaks --noconfirm
 

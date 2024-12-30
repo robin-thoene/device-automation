@@ -122,8 +122,6 @@ echo "Done."
 ###############
 
 echo 'alias gfc="git fetch && git checkout"' >>~/.zshrc
-echo 'alias startdev="podman machine start && podman start storage-dev redis-dev mssql-dev"' >>~/.zshrc
-echo 'alias stopdev="podman stop storage-dev redis-dev mssql-dev && podman machine stop"' >>~/.zshrc
 echo 'alias update_all="~/dev/'"$git_user_name"'/'"$git_automation_repo_name"'/ubuntu/update.sh"' >>~/.zshrc
 
 ###########
@@ -154,7 +152,6 @@ nvm install --lts
 
 # CLI
 npm install --global yarn
-apt-get install -y podman
 apt-get install -y nuget
 snap install --classic powershell
 
