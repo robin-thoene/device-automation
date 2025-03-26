@@ -15,12 +15,10 @@ git_author_email="110201991+robin-thoene@users.noreply.github.com"
 git_automation_repo_name=device-automation
 git_user_dir=~/dev/$git_user_name
 git_company_dir=~/dev/$company_name
-git_catppuccin_dir=~/dev/catppuccin
 automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
 # Create the directory to store git repos.
 mkdir -p $git_user_dir
 mkdir -p $git_company_dir
-mkdir -p $git_catppuccin_dir
 
 #####################
 # Update and upgrade.
@@ -59,14 +57,6 @@ git config --global user.name "$git_author_name"
 git config --global user.email "$git_author_email"
 echo "Done."
 
-#########################
-### Install Kvantum theme
-#########################
-
-cd $git_catppuccin_dir
-git clone https://github.com/catppuccin/Kvantum.git
-ln -s $git_catppuccin_dir/Kvantum/themes/catppuccin-mocha-blue ~/.config/Kvantum
-
 #############################
 ### Clone the automation repo
 #############################
@@ -88,6 +78,16 @@ else
     chsh -s $(which zsh)
 fi
 echo "Done."
+
+############
+### Security
+############
+
+# Ensure no one can use my local dev services on the network
+sudo pacman -S ufw --noconfirm
+sudo ufw default deny incoming
+sudo systemctl enable ufw
+sudo ufw status
 
 ###########
 ### Utility
@@ -188,7 +188,6 @@ echo "Done."
 
 echo "Installing AUR packages..."
 sudo pacman -S yay --noconfirm
-yay -S catppuccin-gtk-theme-mocha
 yay -S visual-studio-code-bin --noconfirm
 yay -S postman-bin --noconfirm
 yay -S logseq-desktop-bin --noconfirm
