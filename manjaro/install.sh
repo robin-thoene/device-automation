@@ -15,12 +15,10 @@ git_author_email="110201991+robin-thoene@users.noreply.github.com"
 git_automation_repo_name=device-automation
 git_user_dir=~/dev/$git_user_name
 git_company_dir=~/dev/$company_name
-git_dracula_dir=~/dev/dracula
 automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
 # Create the directory to store git repos.
 mkdir -p $git_user_dir
 mkdir -p $git_company_dir
-mkdir -p $git_dracula_dir
 
 #####################
 # Update and upgrade.
@@ -48,31 +46,9 @@ sudo ln -s /home/robin/Applications /usr/bin
 sudo pacman -R cliphist --noconfirm
 echo "Done."
 
-######################
-### Download GTK theme
-######################
-
-echo "Downloading Dracula GTK theme..."
-# Theme
-curl -fsSL -o ~/Downloads/Dracula.zip https://github.com/dracula/gtk/archive/master.zip
-unzip ~/Downloads/Dracula.zip -d ~/Downloads/
-mkdir -p ~/.themes
-sudo mv ~/Downloads/gtk-master ~/.themes/Dracula
-rm ~/Downloads/Dracula.zip
-# Icons
-curl -fsSL -o ~/Downloads/Dracula-Icons.zip https://github.com/dracula/gtk/files/5214870/Dracula.zip
-unzip ~/Downloads/Dracula-Icons.zip -d ~/Downloads/
-mkdir -p ~/.icons
-sudo mv ~/Downloads/Dracula ~/.icons/Dracula
-rm ~/Downloads/Dracula-Icons.zip
-echo "Done."
-# Ensure Kvantum can use the Dracula theme as well.
-mkdir -p ~/.config/Kvantum
-ln -s ~/.themes/Dracula/kde/kvantum/Dracula ~/.config/Kvantum/Dracula
-
-################
-### Install git.
-################
+###############
+### Install git
+###############
 
 echo "Installing and setting up git..."
 sudo pacman -S git --noconfirm
@@ -100,11 +76,18 @@ else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     echo "Your password is required to change the default shell to zsh:"
     chsh -s $(which zsh)
-    # Install the dracula theme.
-    cd $git_dracula_dir && git clone https://github.com/dracula/zsh.git
-    ln -s $git_dracula_dir/zsh/dracula.zsh-theme ~/.config/zsh/ohmyzsh/themes/dracula.zsh-theme
 fi
 echo "Done."
+
+############
+### Security
+############
+
+# Ensure no one can use my local dev services on the network
+sudo pacman -S ufw --noconfirm
+sudo ufw default deny incoming
+sudo systemctl enable ufw
+sudo ufw status
 
 ###########
 ### Utility
@@ -117,6 +100,7 @@ sudo pacman -S keepass --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
+sudo pacman -S fd --noconfirm
 sudo pacman -S ripgrep --noconfirm
 sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
@@ -181,7 +165,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
 # CLI
 sudo pacman -S yarn --noconfirm
 sudo pacman -S pnpm --noconfirm
-sudo pacman -S podman --noconfirm
+sudo pacman -S docker --noconfirm
+sudo pacman -S docker-buildx --noconfirm
 sudo pacman -S nuget --noconfirm
 sudo pacman -S gitleaks --noconfirm
 
@@ -190,16 +175,18 @@ sudo pacman -S rustup --noconfirm
 rustup default stable
 
 # Tools
+sudo pacman -S tmux --noconfirm
 sudo pacman -S mysql-workbench --noconfirm
+sudo pacman -S dbeaver --noconfirm
 sudo pacman -S neovim --noconfirm
 sudo pacman -S tree-sitter-cli --noconfirm
 sudo pacman -S gitui --noconfirm
 
 echo "Done."
 
-#########################
-### Install AUR packages.
-#########################
+########################
+### Install AUR packages
+########################
 
 echo "Installing AUR packages..."
 sudo pacman -S yay --noconfirm
