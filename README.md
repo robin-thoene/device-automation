@@ -1,28 +1,17 @@
 # device-automation
 
-Collection of automation code for my machines.
+## Summary
 
-## Manjaro
+This repository contains a collection of manual instructions as well as automation code for
+different operating systems that I am using.
 
-This is my currently preferred OS.
+## Operating systems
 
-1. Open a terminal
-2. Execute `curl -fsSL https://raw.githubusercontent.com/robin-thoene/device-automation/main/manjaro/install.sh > install.sh && chmod +x install.sh && ./install.sh`
-3. Follow the instructions
+This table shows a short summary what OS setups are available and what their current state is:
 
-## MacOS
-
-This installation is meant to be used for work environments where I am forced to not use Linux.
-
-1. Open a terminal
-2. Execute `curl -fsSL https://raw.githubusercontent.com/robin-thoene/device-automation/main/macos/install.sh > install.sh && chmod +x install.sh && ./install.sh`
-3. Follow the instructions
-
-## Ubuntu
-
-The installation of Ubuntu is outdated and currently not used.
-
-1. Open a terminal
-2. Execute `wget -qO- https://raw.githubusercontent.com/robin-thoene/device-automation/main/ubuntu/install.sh | sh`
-3. Follow the instructions
-
+| OS                 | status      | usage         | link             |
+| ------------------ | ----------- | ------------- | ---------------- |
+| Arch Linux         | 🟠 in dev   | experimenting | [🔗](./arch/)    |
+| macOS              | 🟢 in use   | working OS    | [🔗](./macos/)   |
+| manjaro-sway Linux | 🟢 in use   | personal OS   | [🔗](./manjaro/) |
+| Ubuntu Linux       | 🔴 outdated | not in use    | [🔗](./ubuntu/)  |
