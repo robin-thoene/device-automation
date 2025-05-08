@@ -1,65 +1,78 @@
 #!/bin/sh
 
-# This script installs and configures Arch Linux after the initial setup process
-# and is split into different sections, following this general post installation 
-# recommendations that are relevant for this setup
+# This script installs and configures Arch Linux after the initial setup process following 
+# this general post installation recommendations that are relevant for this setup
 # https://wiki.archlinux.org/title/General_recommendations
 
 # System administration
 
+packages=(
+	posix
+	zsh
+)
+pacman -Syyu
+pacman -S ${packages[@]} --noconfirm
+chsh -s /bin/zsh
+echo "Changed default shell to 'zsh'"
+
 ## Users and groups
 
-### TODO
+user_name=robin
+useradd -m -G wheel -s /bin/zsh $user_name
+echo "Created user '$user_name'"
+echo "Set the password for the user '$user_name'"
+passwd $user_name 
+pacman -S sudo --noconfirm
+read -p "Edit the 'sudoers' file and allow the 'wheel' group"
+visudo
+read -p "Changing to user '$user_name'"
+su - $user_name
+sudo passwd -l root
+echo "Disabled 'root' login"
 
 ## Security
 
-### TODO
+packages=(
+	apparmor
+	keepassxc
+	ufw
+	veracrypt
+)
 
-## Service management
+sudo pacman -S ${packages[@]} --noconfirm
 
-### TODO
+sudo ufw default deny incoming
+sudo systemctl enable --now ufw
+echo "Firewall is set up"
 
-## System maintenance
+# see: https://wiki.archlinux.org/title/AppArmor#Installation
+sudo systemctl enable --now apparmor
+read -p "Add apparmor kernel params"
+sudo vi /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+echo "Generated updated GRUB conf"
 
 # Package management
 
-## pacman
-
-### TODO
-
-## Repositories
-
-### TODO
-
 ## Mirrors
 
-### TODO
-
-## Arch Build System
-
-### TODO
+sudo pacman -S reflector --noconfirm
+sudo systemctl enable --now reflector.timer
+echo "--country Germany,France" | sudo tee -a /etc/xdg/reflector/reflector.conf
+echo "Enabled regular mirror list check"
 
 ## Arch User Repository
 
-### TODO
+packages=(
+	base-devel
+	git
+)
 
-# Booting
-
-## Hardware auto-recognition
-
-### TODO
-
-## Microcode
-
-### TODO
-
-## Retaining boot messages
-
-### TODO
-
-## Num Lock activation
-
-### TODO
+sudo pacman -S ${packages[@]} --noconfirm
+git clone https://aur.archlinux.org/yay.git
+cd yay && makepkg -si
+cd .. && rm -rf yay
+echo "Installed AUR helper"
 
 # Graphical user interface
 
@@ -69,15 +82,31 @@
 
 ## Display drivers
 
-### TODO
+packages=(
+	mesa
+	vulkan-intel
+)
 
-## Desktop environments
-
-### TODO
+sudo pacman -S ${packages[@]} --noconfirm
+echo "Installed graphic drivers"
 
 ## Window managers or compositors
 
-### TODO
+packages=(
+	sway
+	swaylock
+	swayidle
+	swaybg
+	bemenu-wayland
+	alacritty
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
+echo "Set up compositor and it's dependencies"
+# TODO: in dotfiles, create .zlogin to auto start sway
+# TODO: create ~/.zshenv that moves config location to ~/.config/zsh/
+# TODO: rewrite sway config from scratch
+
 
 ## Display manager
 

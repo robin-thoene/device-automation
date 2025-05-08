@@ -23,9 +23,12 @@ Here are some noteworthy choices to make during the installation process:
   - use [this](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
     encryption setup when setting up partitions
 - install this packages with pacstrap
-  - `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager neovim man-db man-pages texinfo lvm2 grub efibootmgr`
+  - `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager vi man-db man-pages texinfo lvm2 grub efibootmgr`
 - follow the rest of the installation process
 - when reaching **Initramfs** follow [this](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_3)
 - when reaching the **bootloader** section use
   - [GRUB](https://wiki.archlinux.org/title/GRUB)
   - add kernel parameters [see here](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader_2)
+- enable the network manager service
+  - `systemctl enable NetworkManager.service`
+  - `systemctl start NetworkManager.service`

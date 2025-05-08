@@ -87,7 +87,7 @@ echo "Done."
 sudo pacman -S ufw --noconfirm
 sudo ufw default deny incoming
 sudo systemctl enable ufw
-sudo ufw status
+sudo ufw enable
 
 ###########
 ### Utility
@@ -96,7 +96,7 @@ sudo ufw status
 echo "Installing utility packages..."
 sudo pacman -S alacritty --noconfirm
 sudo pacman -S nsxiv --noconfirm
-sudo pacman -S keepass --noconfirm
+sudo pacman -S keepassxc --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
