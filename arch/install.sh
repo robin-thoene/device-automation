@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-# This script installs and configures Arch Linux after the initial setup process following 
+# This script installs and configures Arch Linux after the initial setup process following
 # this general post installation recommendations that are relevant for this setup
 # https://wiki.archlinux.org/title/General_recommendations
 
@@ -21,7 +21,7 @@ user_name=robin
 useradd -m -G wheel -s /bin/zsh $user_name
 echo "Created user '$user_name'"
 echo "Set the password for the user '$user_name'"
-passwd $user_name 
+passwd $user_name
 pacman -S sudo --noconfirm
 read -p "Edit the 'sudoers' file and allow the 'wheel' group"
 visudo
@@ -76,10 +76,6 @@ echo "Installed AUR helper"
 
 # Graphical user interface
 
-## Display server
-
-### TODO
-
 ## Display drivers
 
 packages=(
@@ -93,28 +89,29 @@ echo "Installed graphic drivers"
 ## Window managers or compositors
 
 packages=(
-	sway
-	swaylock
-	swayidle
-	swaybg
-	bemenu-wayland
 	alacritty
+	autotiling-rs
+	bemenu-wayland
+	sway
+	swaybg
+	swayidle
+	swaylock
+	waybar
 )
 
 sudo pacman -S ${packages[@]} --noconfirm
 echo "Set up compositor and it's dependencies"
-# TODO: in dotfiles, create .zlogin to auto start sway
-# TODO: create ~/.zshenv that moves config location to ~/.config/zsh/
 # TODO: rewrite sway config from scratch
-
 
 ## Display manager
 
-### TODO
+sudo pacman -S lemurs --noconfirm
+sudo systemctl enable lemurs.service
 
 ## User directories
 
-### TODO
+sudo pacman -S xdg-user-dirs --noconfirm
+xdg-user-dirs-update
 
 # Power management
 
@@ -211,6 +208,18 @@ echo "Set up compositor and it's dependencies"
 ### TODO
 
 # Console improvements
+
+echo "Installing Zsh and Oh My Zsh..."
+if [ -d ~/.oh-my-zsh ]; then
+	echo "ZSH is already installed, skipping installation steps."
+else
+	# Install zsh and oh my zsh and set it as default.
+	sudo pacman -S zsh --noconfirm
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	echo "Your password is required to change the default shell to zsh:"
+	chsh -s $(which zsh)
+fi
+echo "Done."
 
 ## Tab-completion enhancements
 
