@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script installs and configures my Manjaro Linux with sway setup.
 
