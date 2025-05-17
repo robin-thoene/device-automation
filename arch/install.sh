@@ -89,7 +89,6 @@ echo "Installed graphic drivers"
 ## Window managers or compositors
 
 packages=(
-	alacritty
 	autotiling-rs
 	bemenu-wayland
 	sway
@@ -101,114 +100,70 @@ packages=(
 
 sudo pacman -S ${packages[@]} --noconfirm
 echo "Set up compositor and it's dependencies"
-# TODO: rewrite sway config from scratch
+# TODO: add waybar modules
+# TODO: style waybar
+# TODO: style sway
 
 ## Display manager
 
 sudo pacman -S lemurs --noconfirm
-sudo systemctl enable lemurs.service
+sudo systemctl enable --now lemurs.service
+echo "Set display manager"
 
 ## User directories
 
 sudo pacman -S xdg-user-dirs --noconfirm
 xdg-user-dirs-update
+echo "Created user directories"
 
 # Power management
 
-## ACPI events
-
-### TODO
-
-## CPU frequency scaling
-
-### TODO
-
 ## Laptops
 
-### TODO
-
-## Suspend and hibernate
-
-### TODO
+sudo pacman -S brightnessctl --noconfirm
 
 # Multimedia
 
 ## Sound system
 
-### TODO
+packages=(
+	pipewire
+	wireplumber
+	pipewire-audio
+	pipewire-alsa
+	pipewire-pulse
+	pipewire-jack
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
+sudo systemctl enable --now pipewire-pulse.service
+echo "Set up audio"
 
 # Networking
 
 ## DNS security
 
-### TODO
-
-## Setting up a firewall
-
-### TODO
-
-## Network shares
-
-### TODO
-
-# Input devices
-
-## Keyboard layouts
-
-### TODO
-
-## Mouse buttons
-
-### TODO
-
-## Laptop touchpads
-
-### TODO
-
-## TrackPoints
-
-### TODO
-
-# Optimization
-
-## Benchmarking
-
-### TODO
-
-## Improving performance
-
-### TODO
-
-## Solid state drives
-
-### TODO
-
-# System services
-
-## File index and search
-
-### TODO
-
-## Local mail delivery
-
-### TODO
-
-## Printing
-
-### TODO
+# TODO: research if something really needs to be done about this after the default installation
 
 # Appearance
 
 ## Fonts
 
-### TODO
+packages=(
+	ttf-jetbrains-mono
+	ttf-roboto
+)
 
-## GTK and Qt themes
-
-### TODO
+sudo pacman -S ${packages[@]} --noconfirm
 
 # Console improvements
 
+packages=(
+	alacritty
+	tmux
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
 echo "Installing Zsh and Oh My Zsh..."
 if [ -d ~/.oh-my-zsh ]; then
 	echo "ZSH is already installed, skipping installation steps."
@@ -220,43 +175,3 @@ else
 	chsh -s $(which zsh)
 fi
 echo "Done."
-
-## Tab-completion enhancements
-
-### TODO
-
-## Aliases
-
-### TODO
-
-## Alternative shells
-
-### TODO
-
-## Bash additions
-
-### TODO
-
-## Colored output
-
-### TODO
-
-## Compressed files
-
-### TODO
-
-## Console prompt
-
-### TODO
-
-## Emacs shell
-
-### TODO
-
-## Mouse support
-
-### TODO
-
-## Session management
-
-### TODO

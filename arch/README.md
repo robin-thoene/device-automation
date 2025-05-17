@@ -20,8 +20,10 @@ Here are some noteworthy choices to make during the installation process:
   - `/boot`
   - `[SWAP]`
   - `/`
+  - use RAM size as SWAP size
   - use [this](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
     encryption setup when setting up partitions
+  - and be sure to enable [resume](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Configure_the_initramfs) for hibernate
 - install this packages with pacstrap
   - `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager neovim man-db man-pages texinfo lvm2 grub efibootmgr`
 - follow the rest of the installation process
