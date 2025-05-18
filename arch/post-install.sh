@@ -13,7 +13,7 @@ packages=(
 	veracrypt
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 sudo ufw default deny incoming
 sudo systemctl enable --now ufw
@@ -29,7 +29,7 @@ echo "Generated updated GRUB conf"
 
 ## Mirrors
 
-sudo pacman -S reflector --noconfirm
+sudo pacman -S reflector --noconfirm --needed
 sudo systemctl enable --now reflector.timer
 echo "--country Germany,France" | sudo tee -a /etc/xdg/reflector/reflector.conf
 echo "Enabled regular mirror list check"
@@ -41,7 +41,7 @@ packages=(
 	git
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 git clone https://aur.archlinux.org/yay.git
 cd yay && makepkg -si
 cd .. && rm -rf yay
@@ -56,7 +56,7 @@ packages=(
 	vulkan-intel
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 echo "Installed graphic drivers"
 
 ## Window managers or compositors
@@ -71,7 +71,7 @@ packages=(
 	waybar
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 echo "Set up compositor and it's dependencies"
 # TODO: add waybar modules
 # TODO: style waybar
@@ -79,13 +79,13 @@ echo "Set up compositor and it's dependencies"
 
 ## Display manager
 
-sudo pacman -S lemurs --noconfirm
+sudo pacman -S lemurs --noconfirm --needed
 sudo systemctl enable --now lemurs.service
 echo "Set display manager"
 
 ## User directories
 
-sudo pacman -S xdg-user-dirs --noconfirm
+sudo pacman -S xdg-user-dirs --noconfirm --needed
 xdg-user-dirs-update
 echo "Created user directories"
 
@@ -93,7 +93,7 @@ echo "Created user directories"
 
 ## Laptops
 
-sudo pacman -S brightnessctl --noconfirm
+sudo pacman -S brightnessctl --noconfirm --needed
 
 # Multimedia
 
@@ -108,7 +108,7 @@ packages=(
 	pipewire-jack
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 sudo systemctl enable --now pipewire-pulse.service
 echo "Set up audio"
 
@@ -121,7 +121,7 @@ packages=(
 	ttf-roboto
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 # Console improvements
 
@@ -130,7 +130,7 @@ packages=(
 	tmux
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 echo "Installing Oh My Zsh..."
 if [ -d $ZDOTDIR/oh-my-zsh ]; then
 	echo "Oh My Zsh is already installed, skipping installation steps."
@@ -171,7 +171,7 @@ packages=(
 	macchina
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 ## LaTeX
 
@@ -188,7 +188,7 @@ packages=(
 	texlive-pictures
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 ## Communication
 
@@ -198,7 +198,7 @@ packages=(
 	signal-desktop
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 ## Entertainment
 
@@ -208,7 +208,7 @@ packages=(
 	mgba-qt
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 ## Development
 
@@ -231,7 +231,7 @@ packages=(
 	gitui
 )
 
-sudo pacman -S ${packages[@]} --noconfirm
+sudo pacman -S ${packages[@]} --noconfirm --needed
 
 echo "Done."
 
