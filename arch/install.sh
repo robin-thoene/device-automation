@@ -139,12 +139,6 @@ sudo pacman -S ${packages[@]} --noconfirm
 sudo systemctl enable --now pipewire-pulse.service
 echo "Set up audio"
 
-# Networking
-
-## DNS security
-
-# TODO: research if something really needs to be done about this after the default installation
-
 # Appearance
 
 ## Fonts
@@ -164,14 +158,10 @@ packages=(
 )
 
 sudo pacman -S ${packages[@]} --noconfirm
-echo "Installing Zsh and Oh My Zsh..."
-if [ -d ~/.oh-my-zsh ]; then
-	echo "ZSH is already installed, skipping installation steps."
+echo "Installing Oh My Zsh..."
+if [ -d $ZDOTDIR/oh-my-zsh ]; then
+	echo "Oh My Zsh is already installed, skipping installation steps."
 else
-	# Install zsh and oh my zsh and set it as default.
-	sudo pacman -S zsh --noconfirm
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-	echo "Your password is required to change the default shell to zsh:"
-	chsh -s $(which zsh)
 fi
 echo "Done."
