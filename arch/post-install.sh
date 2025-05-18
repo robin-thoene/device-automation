@@ -19,9 +19,8 @@ sudo ufw default deny incoming
 sudo systemctl enable --now ufw
 echo "Firewall is set up"
 
-# see: https://wiki.archlinux.org/title/AppArmor#Installation
 sudo systemctl enable --now apparmor
-read -p "Add apparmor kernel params"
+read -p "Add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
 sudo vi /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo "Generated updated GRUB conf"
@@ -231,6 +230,8 @@ packages=(
 	tree-sitter-cli
 	gitui
 )
+
+sudo pacman -S ${packages[@]} --noconfirm
 
 echo "Done."
 
