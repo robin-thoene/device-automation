@@ -34,3 +34,30 @@ Here are some noteworthy choices to make during the installation process:
 - enable the network manager service
   - `systemctl enable NetworkManager.service`
   - `systemctl start NetworkManager.service`
+
+Execute the following commands to finish the initial installation:
+
+```shell
+packages=(
+	posix
+	zsh
+)
+
+pacman -Syyu --noconfirm
+pacman -S ${packages[@]} --noconfirm
+chsh -s /bin/zsh
+echo "Changed default shell to 'zsh'"
+
+user_name=robin
+useradd -m -G wheel -s /bin/zsh $user_name
+echo "Created user '$user_name'"
+echo "Set the password for the user '$user_name'"
+passwd $user_name
+pacman -S sudo --noconfirm
+read -p "Edit the 'sudoers' file and allow the 'wheel' group"
+visudo
+read -p "Changing to user '$user_name'"
+su - $user_name
+sudo passwd -l root
+echo "Disabled 'root' login"
+```

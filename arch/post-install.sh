@@ -4,33 +4,6 @@
 # this general post installation recommendations that are relevant for this setup
 # https://wiki.archlinux.org/title/General_recommendations
 
-# System administration
-
-packages=(
-	posix
-	zsh
-)
-pacman-mirrors --fasttrack
-pacman -Syyu --noconfirm
-pacman -S ${packages[@]} --noconfirm
-chsh -s /bin/zsh
-echo "Changed default shell to 'zsh'"
-
-## Users and groups
-
-user_name=robin
-useradd -m -G wheel -s /bin/zsh $user_name
-echo "Created user '$user_name'"
-echo "Set the password for the user '$user_name'"
-passwd $user_name
-pacman -S sudo --noconfirm
-read -p "Edit the 'sudoers' file and allow the 'wheel' group"
-visudo
-read -p "Changing to user '$user_name'"
-su - $user_name
-sudo passwd -l root
-echo "Disabled 'root' login"
-
 ## Security
 
 packages=(
