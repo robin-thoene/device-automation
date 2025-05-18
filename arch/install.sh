@@ -10,7 +10,8 @@ packages=(
 	posix
 	zsh
 )
-pacman -Syyu
+pacman-mirrors --fasttrack
+pacman -Syyu --noconfirm
 pacman -S ${packages[@]} --noconfirm
 chsh -s /bin/zsh
 echo "Changed default shell to 'zsh'"
@@ -165,3 +166,109 @@ else
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 echo "Done."
+
+# Old install script content (manjaro-sway)
+
+## setting up git stuff
+
+git_user_name=robin-thoene
+git_user_dir=~/dev/$git_user_name
+git_automation_repo_name=device-automation
+automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
+mkdir -p $git_user_dir
+git config --global credential.helper store
+
+## ensure this repo is always available
+
+cd $git_user_dir && git clone $automation_repo_git_url
+
+## Setup applications directory.
+
+mkdir -p ~/Applications
+sudo ln -s /home/robin/Applications /usr/bin
+
+## utility
+
+packages=(
+	nsxiv
+	firefox
+	fzf
+	fd
+	ripgrep
+	ifuse
+	macchina
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
+
+## LaTeX
+
+packages=(
+	texlive-basic
+	texlive-bin
+	texlive-binextra
+	texlive-fontsextra
+	texlive-fontsrecommended
+	texlive-langgerman
+	texlive-latex
+	texlive-latexextra
+	texlive-latexrecommended
+	texlive-pictures
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
+
+## Communication
+
+packages=(
+	thunderbird
+	discord
+	signal-desktop
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
+
+## Entertainment
+
+packages=(
+	vlc
+	steam
+	mgba-qt
+)
+
+sudo pacman -S ${packages[@]} --noconfirm
+
+## Development
+
+echo "Installing development packages..."
+
+packages=(
+	dotnet-sdk
+	aspnet-runtime
+	yarn
+	pnpm
+	docker
+	docker-buildx
+	docker-compose
+	nuget
+	gitleaks
+	rustup
+	mysql-workbench
+	dbeaver
+	tree-sitter-cli
+	gitui
+)
+
+echo "Done."
+
+### Dotnet
+dotnet tool install --global dotnet-ef
+
+### NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
+
+### Rust
+rustup default stable
+
+### Docker
+sudo systemctl enable --now docker
