@@ -106,7 +106,7 @@ sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
 sudo pacman -S seahorse --noconfirm
 sudo pacman -S ifuse --noconfirm
-sudo pacman -S neofetch --noconfirm
+sudo pacman -S macchina --noconfirm
 echo "Done."
 
 #########
@@ -156,17 +156,16 @@ sudo pacman -S dotnet-sdk --noconfirm
 sudo pacman -S aspnet-runtime --noconfirm
 dotnet tool install --global dotnet-ef
 
-# PWSH
-dotnet tool install --global PowerShell
-
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
+nvm install --lts
 
 # CLI
 sudo pacman -S yarn --noconfirm
 sudo pacman -S pnpm --noconfirm
 sudo pacman -S docker --noconfirm
 sudo pacman -S docker-buildx --noconfirm
+sudo pacman -S docker-compose --noconfirm
 sudo pacman -S nuget --noconfirm
 sudo pacman -S gitleaks --noconfirm
 
@@ -190,7 +189,4 @@ echo "Done."
 
 echo "Installing AUR packages..."
 sudo pacman -S yay --noconfirm
-yay -S visual-studio-code-bin --noconfirm
-yay -S postman-bin --noconfirm
-yay -S logseq-desktop-bin --noconfirm
 echo "Done."
