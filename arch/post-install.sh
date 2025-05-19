@@ -16,12 +16,12 @@ packages=(
 sudo pacman -S ${packages[@]} --noconfirm --needed
 
 sudo ufw default deny incoming
-sudo systemctl enable --now ufw
+sudo systemctl enable ufw
 echo "Firewall is set up"
 
-sudo systemctl enable --now apparmor
+sudo systemctl enable apparmor
 read -p "Add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
-sudo vi /etc/default/grub
+sudo vim /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo "Generated updated GRUB conf"
 
@@ -30,7 +30,7 @@ echo "Generated updated GRUB conf"
 ## Mirrors
 
 sudo pacman -S reflector --noconfirm --needed
-sudo systemctl enable --now reflector.timer
+sudo systemctl enable reflector.timer
 echo "--country Germany,France" | sudo tee -a /etc/xdg/reflector/reflector.conf
 echo "Enabled regular mirror list check"
 
@@ -80,7 +80,7 @@ echo "Set up compositor and it's dependencies"
 ## Display manager
 
 sudo pacman -S lemurs --noconfirm --needed
-sudo systemctl enable --now lemurs.service
+sudo systemctl enable lemurs.service
 echo "Set display manager"
 
 ## User directories
@@ -109,7 +109,7 @@ packages=(
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
-sudo systemctl enable --now pipewire-pulse.service
+sudo systemctl enable pipewire-pulse.service
 echo "Set up audio"
 
 # Appearance
@@ -246,4 +246,6 @@ nvm install --lts
 rustup default stable
 
 ### Docker
-sudo systemctl enable --now docker
+sudo systemctl enable docker
+
+read -p "Rebooting now"
