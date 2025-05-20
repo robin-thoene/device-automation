@@ -86,7 +86,6 @@ echo "Done."
 # Ensure no one can use my local dev services on the network
 sudo pacman -S ufw --noconfirm
 sudo ufw default deny incoming
-sudo systemctl enable ufw
 sudo ufw enable
 
 ###########

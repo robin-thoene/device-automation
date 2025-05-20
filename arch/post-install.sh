@@ -16,7 +16,7 @@ packages=(
 sudo pacman -S ${packages[@]} --noconfirm --needed
 
 sudo ufw default deny incoming
-sudo systemctl enable ufw
+sudo ufw enable
 echo "Firewall is set up"
 
 sudo systemctl enable apparmor
@@ -64,6 +64,7 @@ echo "Installed graphic drivers"
 packages=(
 	autotiling-rs
 	bemenu-wayland
+	foot
 	sway
 	swaybg
 	swayidle
@@ -119,6 +120,7 @@ echo "Set up audio"
 packages=(
 	ttf-jetbrains-mono
 	ttf-roboto
+	ttf-jetbrains-mono-nerd
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
@@ -169,6 +171,9 @@ packages=(
 	ripgrep
 	ifuse
 	macchina
+	unzip
+	wl-clipboard
+	zathura
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
@@ -217,6 +222,7 @@ echo "Installing development packages..."
 packages=(
 	dotnet-sdk
 	aspnet-runtime
+	npm
 	yarn
 	pnpm
 	docker
