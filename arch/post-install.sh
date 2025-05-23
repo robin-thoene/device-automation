@@ -9,6 +9,7 @@
 packages=(
 	apparmor
 	keepassxc
+	qt5-wayland
 	ufw
 	veracrypt
 )
@@ -64,8 +65,10 @@ echo "Installed graphic drivers"
 packages=(
 	autotiling-rs
 	bemenu-wayland
+	capitaine-cursors
 	foot
 	sway
+	bluez
 	swaybg
 	swayidle
 	swaylock
@@ -73,10 +76,8 @@ packages=(
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
+sudo systemctl enable bluetooth.service
 echo "Set up compositor and it's dependencies"
-# TODO: add waybar modules
-# TODO: style waybar
-# TODO: style sway
 
 ## Display manager
 
@@ -90,12 +91,6 @@ sudo pacman -S xdg-user-dirs --noconfirm --needed
 xdg-user-dirs-update
 echo "Created user directories"
 
-# Power management
-
-## Laptops
-
-sudo pacman -S brightnessctl --noconfirm --needed
-
 # Multimedia
 
 ## Sound system
@@ -106,11 +101,9 @@ packages=(
 	pipewire-audio
 	pipewire-alsa
 	pipewire-pulse
-	pipewire-jack
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
-sudo systemctl enable pipewire-pulse.service
 echo "Set up audio"
 
 # Appearance
@@ -118,12 +111,22 @@ echo "Set up audio"
 ## Fonts
 
 packages=(
+	noto-fonts-emoji
 	ttf-jetbrains-mono
 	ttf-roboto
 	ttf-jetbrains-mono-nerd
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
+
+## Lang: Ensure all languages are generated successful
+sudo locale-gen
+
+# Checkout dotfiles (must be done before installing oh-my-zsh)
+git clone --bare https://github.com/robin-thoene/dotfiles.git $HOME/dev/robin-thoene/dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/robin-thoene/dotfiles --work-tree=$HOME'
+dotfiles config --local status.showUntrackedFiles no
+dotfiles checkout
 
 # Console improvements
 
@@ -137,7 +140,7 @@ echo "Installing Oh My Zsh..."
 if [ -d $ZDOTDIR/oh-my-zsh ]; then
 	echo "Oh My Zsh is already installed, skipping installation steps."
 else
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
 echo "Done."
 
@@ -174,6 +177,10 @@ packages=(
 	unzip
 	wl-clipboard
 	zathura
+	bluetui
+	ranger
+	htop
+	pulsemixer
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
@@ -255,3 +262,4 @@ rustup default stable
 sudo systemctl enable docker
 
 read -p "Rebooting now"
+sudo reboot
