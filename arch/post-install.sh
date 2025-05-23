@@ -64,7 +64,7 @@ echo "Installed graphic drivers"
 
 packages=(
 	autotiling-rs
-	bemenu-wayland
+	fuzzel
 	capitaine-cursors
 	foot
 	sway
