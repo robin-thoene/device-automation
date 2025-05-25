@@ -66,7 +66,6 @@ packages=(
 	autotiling-rs
 	fuzzel
 	capitaine-cursors
-	foot
 	sway
 	bluez
 	swaybg
@@ -181,6 +180,7 @@ packages=(
 	ranger
 	htop
 	pulsemixer
+	wireguard-tools
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
@@ -260,6 +260,7 @@ rustup default stable
 
 ### Docker
 sudo systemctl enable docker
+sudo usermod -a -G docker robin
 
 read -p "Rebooting now"
 sudo reboot
