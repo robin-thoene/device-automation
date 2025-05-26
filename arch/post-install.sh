@@ -73,6 +73,9 @@ packages=(
 	swayidle
 	swaylock
 	waybar
+	xdg-desktop-portal
+	xdg-desktop-portal-gtk
+	xdg-desktop-portal-wlr
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
@@ -136,6 +139,9 @@ packages=(
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# oh my zsh
 echo "Installing Oh My Zsh..."
 if [ -d $ZDOTDIR/oh-my-zsh ]; then
 	echo "Oh My Zsh is already installed, skipping installation steps."
