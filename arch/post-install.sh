@@ -67,6 +67,7 @@ packages=(
 	fuzzel
 	capitaine-cursors
 	sway
+	mako
 	bluez
 	swaybg
 	swayidle
@@ -176,6 +177,7 @@ packages=(
 	unzip
 	wl-clipboard
 	zathura
+	zathura-pdf-poppler
 	bluetui
 	ranger
 	htop
