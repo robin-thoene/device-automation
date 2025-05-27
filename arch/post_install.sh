@@ -1,75 +1,30 @@
 #!/bin/bash
 
-# This script installs and configures Arch Linux after the initial setup process following
-# this general post installation recommendations that are relevant for this setup
-# https://wiki.archlinux.org/title/General_recommendations
-
-## Security
-
+#####################
+# Installing packages
+#####################
+echo "[START] - Installing packages ..."
 packages=(
+	# Base
+	base-devel
+	git
+	# Security
 	apparmor
 	keepassxc
 	ufw
 	veracrypt
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-
-sudo ufw default deny incoming
-sudo ufw enable
-echo "Firewall is set up"
-
-sudo systemctl enable apparmor
-read -p "Add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
-sudo vim /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-echo "Generated updated GRUB conf"
-
-# Package management
-
-## Mirrors
-
-sudo pacman -S reflector --noconfirm --needed
-sudo systemctl enable reflector.timer
-echo "--country Germany,France" | sudo tee -a /etc/xdg/reflector/reflector.conf
-echo "Enabled regular mirror list check"
-
-## Arch User Repository
-
-packages=(
-	base-devel
-	git
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-git clone https://aur.archlinux.org/yay.git
-cd yay && makepkg -si
-cd .. && rm -rf yay
-echo "Installed AUR helper"
-
-# Graphical user interface
-
-## Display drivers
-
-packages=(
+	# Graphical user interface
+	## Display drivers
 	mesa
 	vulkan-intel
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-echo "Installed graphic drivers"
-
-## Window managers or compositors
-
-packages=(
+	## Window managers or compositors
 	autotiling-rs
-	fuzzel
-	capitaine-cursors
-	sway
-	xorg-xwayland
-	qt5-wayland
-	mako
 	bluez
+	capitaine-cursors
+	fuzzel
+	mako
+	qt5-wayland
+	sway
 	swaybg
 	swayidle
 	swaylock
@@ -77,131 +32,47 @@ packages=(
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
 	xdg-desktop-portal-wlr
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-sudo systemctl enable bluetooth.service
-echo "Set up compositor and it's dependencies"
-
-## Display manager
-
-sudo pacman -S lemurs --noconfirm --needed
-sudo systemctl enable lemurs.service
-echo "Set display manager"
-
-## User directories
-
-sudo pacman -S xdg-user-dirs --noconfirm --needed
-xdg-user-dirs-update
-echo "Created user directories"
-
-# Multimedia
-
-## Sound system
-
-packages=(
+	xorg-xwayland
+	## Display manager
+	lemurs
+	## User directories
+	xdg-user-dirs
+	# Multimedia
+	## Sound system
 	pipewire
-	wireplumber
 	pipewire-audio
 	pipewire-alsa
 	pipewire-pulse
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-echo "Set up audio"
-
-# Appearance
-
-## Fonts
-
-packages=(
+	wireplumber
+	# Appearance
+	## Fonts
 	noto-fonts-emoji
 	ttf-jetbrains-mono
-	ttf-roboto
 	ttf-jetbrains-mono-nerd
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-
-## Lang: Ensure all languages are generated successful
-sudo locale-gen
-
-# Checkout dotfiles (must be done before installing oh-my-zsh)
-git clone --bare https://github.com/robin-thoene/dotfiles.git $HOME/dev/robin-thoene/dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/robin-thoene/dotfiles --work-tree=$HOME'
-dotfiles config --local status.showUntrackedFiles no
-dotfiles checkout
-
-# Console improvements
-
-packages=(
+	ttf-roboto
+	# Console improvements
 	alacritty
 	tmux
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-# tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# oh my zsh
-echo "Installing Oh My Zsh..."
-if [ -d $ZDOTDIR/oh-my-zsh ]; then
-	echo "Oh My Zsh is already installed, skipping installation steps."
-else
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-fi
-echo "Done."
-
-# Old install script content (manjaro-sway)
-
-## setting up git stuff
-
-git_user_name=robin-thoene
-git_user_dir=~/dev/$git_user_name
-git_automation_repo_name=device-automation
-automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
-mkdir -p $git_user_dir
-git config --global credential.helper store
-
-## ensure this repo is always available
-
-cd $git_user_dir && git clone $automation_repo_git_url
-
-# ensure all themes are set initially
-
-$git_user_dir/$git_automation_repo_name/arch/theme_toggle.sh
-
-## Setup applications directory.
-
-mkdir -p ~/Applications
-sudo ln -s /home/robin/Applications /usr/bin
-
-## utility
-
-packages=(
-	nsxiv
+	# User applications
+	## utility
+	bluetui
+	fd
 	firefox
 	fzf
-	fd
-	ripgrep
+	htop
 	ifuse
+	jq
 	macchina
+	nsxiv
+	pulsemixer
+	ranger
+	ripgrep
 	unzip
+	wireguard-tools
 	wl-clipboard
 	zathura
 	zathura-pdf-poppler
-	bluetui
-	ranger
-	htop
-	pulsemixer
-	wireguard-tools
-	jq
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-
-## LaTeX
-
-packages=(
+	## LaTeX
 	texlive-basic
 	texlive-bin
 	texlive-binextra
@@ -212,70 +83,159 @@ packages=(
 	texlive-latexextra
 	texlive-latexrecommended
 	texlive-pictures
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-
-## Communication
-
-packages=(
-	thunderbird
+	## Communication
 	discord
 	signal-desktop
 	teamspeak3
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-
-## Entertainment
-
-packages=(
-	vlc
-	steam
+	thunderbird
+	## Entertainment
 	mgba-qt
-)
-
-sudo pacman -S ${packages[@]} --noconfirm --needed
-
-## Development
-
-echo "Installing development packages..."
-
-packages=(
-	dotnet-sdk
+	steam
+	vlc
+	## Development
 	aspnet-runtime
-	npm
-	yarn
-	pnpm
+	dbeaver
 	docker
 	docker-buildx
 	docker-compose
-	nuget
+	dotnet-sdk
 	gitleaks
-	rustup
-	mysql-workbench
-	dbeaver
-	tree-sitter-cli
 	gitui
+	npm
+	nuget
+	pnpm
+	rustup
+	tree-sitter-cli
+	mysql-workbench
+	yarn
 )
-
 sudo pacman -S ${packages[@]} --noconfirm --needed
+echo "[DONE] - Finished installing packages"
 
-echo "Done."
+##########
+# Security
+##########
 
-### Dotnet
+echo "[START] - Configuring security related settings ..."
+
+echo "Setting up a firewall ..."
+sudo ufw default deny incoming
+sudo ufw enable
+echo "Done"
+
+echo "Setting up apparmor ..."
+sudo systemctl enable apparmor
+read -p "Add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
+sudo vim /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+echo "Generated updated GRUB conf"
+echo "Done"
+
+echo "[DONE] - Configuring security"
+
+####################
+# Package management
+####################
+
+echo "[START] - Configuring package managers ..."
+
+echo "Setting up reflector ..."
+echo "--country Germany,France" | sudo tee -a /etc/xdg/reflector/reflector.conf
+sudo systemctl enable reflector.timer
+echo "Done"
+
+echo "Installing AUR helper ..."
+git clone https://aur.archlinux.org/yay.git
+cd yay && makepkg -si
+cd .. && rm -rf yay
+echo "Done"
+
+echo "[DONE] - Configuring package managers"
+
+###################
+# Setup environment
+###################
+
+echo "[START] - Configuring environment ..."
+
+echo "Enabling necessary services ..."
+sudo systemctl enable bluetooth.service
+sudo systemctl enable lemurs.service
+echo "Done"
+
+# This creates the standard user home directories
+echo "Creating home directories ..."
+xdg-user-dirs-update
+echo "Done"
+
+# Ensure that all locales are definitely set up
+echo "Generate locales ..."
+sudo locale-gen
+echo "Done"
+
+# Restore dotfiles
+echo "Restoring dotfiles ..."
+git clone --bare https://github.com/robin-thoene/dotfiles.git $HOME/dev/robin-thoene/dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/robin-thoene/dotfiles --work-tree=$HOME'
+dotfiles config --local status.showUntrackedFiles no
+dotfiles checkout
+echo "Done"
+
+# tmux plugin manager
+echo "Setting up plugin manager for tmux ..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "Done"
+
+# oh my zsh installation
+echo "Installing oh-my-zsh ..."
+if [ -d $ZDOTDIR/oh-my-zsh ]; then
+	echo "Oh My Zsh is already installed, skipping installation steps."
+else
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+fi
+echo "Done"
+
+# Clone the automation repository, containing helper shell scripts
+echo "Cloning device-automation repositories ..."
+git_user_name=robin-thoene
+git_user_dir=~/dev/$git_user_name
+git_automation_repo_name=device-automation
+automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
+mkdir -p $git_user_dir
+git config --global credential.helper store
+cd $git_user_dir && git clone $automation_repo_git_url
+echo "Done"
+
+# ensure all themes are set initially
+echo "Setting up application themes ..."
+$git_user_dir/$git_automation_repo_name/arch/theme_toggle.sh
+echo "Done"
+
+# Setup applications directory.
+echo "Creating application dir ..."
+mkdir -p ~/Applications
+sudo ln -s /home/robin/Applications /usr/bin
+echo "Done"
+
+# Setup development tools
+echo "Setting up dev tools ..."
+## Dotnet
 dotnet tool install --global dotnet-ef
-
-### NVM
+## NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
-
-### Rust
+## Rust
 rustup default stable
-
-### Docker
+## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
+echo "Done"
+
+echo "[DONE] - Configuring environment"
+
+#####
+# Fin
+#####
 
 read -p "Rebooting now"
 sudo reboot
