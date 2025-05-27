@@ -165,6 +165,10 @@ git config --global credential.helper store
 
 cd $git_user_dir && git clone $automation_repo_git_url
 
+# ensure all themes are set initially
+
+$git_user_dir/$git_automation_repo_name/arch/theme_toggle.sh
+
 ## Setup applications directory.
 
 mkdir -p ~/Applications
