@@ -9,7 +9,6 @@
 packages=(
 	apparmor
 	keepassxc
-	qt5-wayland
 	ufw
 	veracrypt
 )
@@ -67,6 +66,8 @@ packages=(
 	fuzzel
 	capitaine-cursors
 	sway
+	xorg-xwayland
+	qt5-wayland
 	mako
 	bluez
 	swaybg
@@ -193,6 +194,7 @@ packages=(
 	htop
 	pulsemixer
 	wireguard-tools
+	jq
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
@@ -220,6 +222,7 @@ packages=(
 	thunderbird
 	discord
 	signal-desktop
+	teamspeak3
 )
 
 sudo pacman -S ${packages[@]} --noconfirm --needed
