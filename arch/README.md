@@ -24,7 +24,7 @@ Here are some noteworthy choices to make during the installation process:
   - use [this](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
     encryption setup when setting up partitions
 - install this packages with pacstrap
-  - `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager vim man-db man-pages texinfo lvm2 grub efibootmgr`
+  - `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager iwd vim man-db man-pages texinfo lvm2 grub efibootmgr`
 - follow the rest of the installation process
 - when reaching **Initramfs** follow [this](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_3)
   - and be sure to enable [resume](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Configure_the_initramfs) for hibernate

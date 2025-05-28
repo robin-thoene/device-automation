@@ -61,6 +61,7 @@ packages=(
 	fzf
 	htop
 	ifuse
+	impala
 	jq
 	macchina
 	nsxiv
