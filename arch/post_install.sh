@@ -22,8 +22,10 @@ packages=(
 	bluez
 	capitaine-cursors
 	fuzzel
+	grim
 	mako
 	qt5-wayland
+	slurp
 	sway
 	swaybg
 	swayidle
