@@ -68,11 +68,11 @@ packages=(
 	macchina
 	nsxiv
 	pulsemixer
-	ranger
 	ripgrep
 	unzip
 	wireguard-tools
 	wl-clipboard
+	yazi
 	zathura
 	zathura-pdf-poppler
 	## LaTeX

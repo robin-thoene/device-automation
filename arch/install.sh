@@ -7,6 +7,8 @@ packages=(
 	neovim
 )
 
+read -p "Enable the multilib repository"
+vim /etc/pacman.conf
 pacman -Syyu --noconfirm
 pacman -S ${packages[@]} --noconfirm
 chsh -s /bin/zsh

@@ -33,6 +33,12 @@ mako_light_colors=$mako_conf_dir/catppuccin-latte
 mako_dark_colors=$mako_conf_dir/catppuccin-mocha
 mako_colors_conf=$mako_conf_dir/colors
 
+# yazi
+yazi_conf_dir=~/.config/yazi
+yazi_light_colors=$yazi_conf_dir/catppuccin-latte.toml
+yazi_dark_colors=$yazi_conf_dir/catppuccin-mocha.toml
+yazi_colors_conf=$yazi_conf_dir/theme.toml
+
 echo "$current"
 
 if [[ "$current" == "'prefer-dark'" ]]; then
@@ -40,9 +46,8 @@ if [[ "$current" == "'prefer-dark'" ]]; then
 	ln -sf $sway_light_colors $sway_colors_conf
 	ln -sf $waybar_light_colors $waybar_colors_conf
 	ln -sf $fuzzel_light_colors $fuzzel_colors_conf
-
 	ln -sf $mako_light_colors $mako_colors_conf
-	makoctl reload
+	ln -sf $yazi_light_colors $yazi_colors_conf
 
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
 else
@@ -50,11 +55,11 @@ else
 	ln -sf $sway_dark_colors $sway_colors_conf
 	ln -sf $waybar_dark_colors $waybar_colors_conf
 	ln -sf $fuzzel_dark_colors $fuzzel_colors_conf
-
 	ln -sf $mako_dark_colors $mako_colors_conf
-	makoctl reload
+	ln -sf $yazi_dark_colors $yazi_colors_conf
 
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 fi
 
+makoctl reload
 swaymsg reload
