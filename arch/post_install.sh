@@ -15,6 +15,7 @@ packages=(
 	veracrypt
 	# Graphical user interface
 	## Display drivers
+	intel-media-driver
 	mesa
 	vulkan-intel
 	## Window managers or compositors
@@ -75,7 +76,8 @@ packages=(
 	yazi
 	zathura
 	zathura-pdf-poppler
-	## LaTeX
+	## Office
+	libreoffice-still
 	texlive-basic
 	texlive-bin
 	texlive-binextra
