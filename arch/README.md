@@ -11,6 +11,8 @@ This is the (automated) setup process for creating a software developer machine 
 
 ## Installation instructions
 
+TODO: switch boot loader to systemd-boot and enable secure boot
+
 For now, the installation of Arch Linux will be done within this setup following the
 [official documentation](https://wiki.archlinux.org/title/Installation_guide#).
 

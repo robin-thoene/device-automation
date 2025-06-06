@@ -183,6 +183,8 @@ echo "Restoring dotfiles ..."
 git clone --bare https://github.com/robin-thoene/dotfiles.git $HOME/dev/robin-thoene/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/robin-thoene/dotfiles --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
+# TODO: remove this later after the dotfiles branch is merged
+dotfiles symbolic-ref HEAD refs/heads/arch-btw
 dotfiles checkout
 echo "Done"
 
