@@ -106,6 +106,12 @@ sudo pacman -S gnome-keyring --noconfirm
 sudo pacman -S seahorse --noconfirm
 sudo pacman -S ifuse --noconfirm
 sudo pacman -S macchina --noconfirm
+sudo pacman -S yazi --noconfirm
+sudo pacman -S fuzzel --noconfirm
+sudo pacman -S capitaine-cursors --noconfirm
+sudo pacman -S bluetui --noconfirm
+sudo pacman -S impala --noconfirm
+
 echo "Done."
 
 #########
