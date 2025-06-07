@@ -32,8 +32,12 @@ Here are some noteworthy choices to make during the installation process:
   - and be sure to enable [resume](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Configure_the_initramfs) for hibernate
 - when reaching the **bootloader** section use
   - [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot)
-  - add kernel parameters [see here](https://wiki.archlinux.org/title/Systemd-boot#Adding_loaders)
+  - add kernel parameters
+    - [get the UUID of cryptdevice](https://wiki.archlinux.org/title/Persistent_block_device_naming#by-uuid)
+    - [needed param](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_the_boot_loader_2)
+    - [for systemd-boot](https://wiki.archlinux.org/title/Systemd-boot#Adding_loaders)
 - enable the network manager service
   - `systemctl enable NetworkManager.service`
 - execute the [install script](./install.sh)
+- reboot and login as the created user
 - execute the [post install script](./post-install.sh)

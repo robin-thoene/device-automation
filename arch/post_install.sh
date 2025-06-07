@@ -12,6 +12,7 @@ packages=(
 	# Base
 	base-devel
 	git
+	reflector
 	# Security
 	apparmor
 	keepassxc
@@ -196,6 +197,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Done"
 
 # oh my zsh installation
+export ZDOTDIR=~/.config/zsh
 echo "Installing oh-my-zsh ..."
 if [ -d $ZDOTDIR/oh-my-zsh ]; then
 	echo "Oh My Zsh is already installed, skipping installation steps."
@@ -241,10 +243,3 @@ sudo usermod -a -G docker robin
 echo "Done"
 
 echo "[DONE] - Configuring environment"
-
-#####
-# Fin
-#####
-
-read -p "Rebooting now"
-sudo reboot
