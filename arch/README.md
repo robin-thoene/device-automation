@@ -40,4 +40,7 @@ Here are some noteworthy choices to make during the installation process:
   - `systemctl enable NetworkManager.service`
 - execute the [install script](./install.sh)
 - reboot and login as the created user
+- setup wifi connection with **iwctl**
 - execute the [post install script](./post-install.sh)
+- [restore dotfiles](https://github.com/robin-thoene/dotfiles)
+- execute `~/dev/robin-thoene/device-automation/arch/theme_toggle.sh`

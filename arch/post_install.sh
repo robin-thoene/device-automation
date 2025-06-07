@@ -131,6 +131,7 @@ echo "[START] - Configuring security related settings ..."
 echo "Setting up a firewall ..."
 sudo ufw default deny incoming
 sudo ufw enable
+sudo systemctl enable ufw
 echo "Done"
 
 echo "Setting up apparmor ..."
@@ -181,14 +182,6 @@ echo "Done"
 # Ensure that all locales are definitely set up
 echo "Generate locales ..."
 sudo locale-gen
-echo "Done"
-
-# Restore dotfiles
-echo "Restoring dotfiles ..."
-git clone --bare https://github.com/robin-thoene/dotfiles.git $HOME/dev/robin-thoene/dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/robin-thoene/dotfiles --work-tree=$HOME'
-dotfiles config --local status.showUntrackedFiles no
-dotfiles checkout -f
 echo "Done"
 
 # tmux plugin manager
