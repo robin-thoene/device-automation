@@ -28,6 +28,3 @@ visudo
 
 read -p "Changing to user '$user_name'"
 su - $user_name
-
-sudo passwd -l root
-echo "Disabled 'root' login"

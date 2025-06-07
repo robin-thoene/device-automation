@@ -1,8 +1,12 @@
 #!/bin/bash
 
+sudo passwd -l root
+echo "Disabled 'root' login"
+
 #####################
 # Installing packages
 #####################
+
 echo "[START] - Installing packages ..."
 packages=(
 	# Base
@@ -131,9 +135,9 @@ echo "Done"
 echo "Setting up apparmor ..."
 sudo systemctl enable apparmor
 read -p "Add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
-sudo vim /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-echo "Generated updated GRUB conf"
+sudo vim /boot/loader/entries/arch.conf
+sudo bootctl update
+echo "Generated updated boot conf"
 echo "Done"
 
 echo "[DONE] - Configuring security"
@@ -183,9 +187,7 @@ echo "Restoring dotfiles ..."
 git clone --bare https://github.com/robin-thoene/dotfiles.git $HOME/dev/robin-thoene/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/robin-thoene/dotfiles --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
-# TODO: remove this later after the dotfiles branch is merged
-dotfiles symbolic-ref HEAD refs/heads/arch-btw
-dotfiles checkout
+dotfiles checkout -f
 echo "Done"
 
 # tmux plugin manager
