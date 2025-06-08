@@ -62,4 +62,4 @@ This script is meant to be run after you finalized the manual Arch install, but 
 
 ### 4. Secure boot
 
-TODO: enable secure boot
+TODO: enable secure boot, try using [sbctl](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Assisted_process_with_sbctl)
