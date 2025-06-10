@@ -16,6 +16,7 @@ packages=(
 	# Security
 	apparmor
 	keepassxc
+	sbctl
 	ufw
 	veracrypt
 	# Graphical user interface
