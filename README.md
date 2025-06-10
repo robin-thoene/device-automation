@@ -9,9 +9,9 @@ different operating systems that I am using.
 
 This table shows a short summary what OS setups are available and what their current state is:
 
-| OS                 | status      | usage         | link             |
-| ------------------ | ----------- | ------------- | ---------------- |
-| Arch Linux         | 🟠 in dev   | experimenting | [🔗](./arch/)    |
-| macOS              | 🟢 in use   | working OS    | [🔗](./macos/)   |
-| manjaro-sway Linux | 🟢 in use   | personal OS   | [🔗](./manjaro/) |
-| Ubuntu Linux       | 🔴 outdated | not in use    | [🔗](./ubuntu/)  |
+| OS                 | status | usage         | link             |
+| ------------------ | ------ | ------------- | ---------------- |
+| Arch Linux         | 🟠     | experimenting | [🔗](./arch/)    |
+| macOS              | 🟢     | working OS    | [🔗](./macos/)   |
+| manjaro-sway Linux | 🟢     | personal OS   | [🔗](./manjaro/) |
+| Ubuntu Linux       | 🔴     | not in use    | [🔗](./ubuntu/)  |
