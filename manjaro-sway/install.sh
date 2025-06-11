@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script installs and configures my Manjaro Linux with sway setup.
 
@@ -39,6 +39,7 @@ echo "Applying operating system settings..."
 sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
 sudo pacman -S noto-fonts-emoji --noconfirm
 sudo pacman -S pkgconf --noconfirm
+sudo pacman -S intel-media-driver --noconfirm
 # Setup applications directory.
 mkdir -p ~/Applications
 sudo ln -s /home/robin/Applications /usr/bin
@@ -86,8 +87,8 @@ echo "Done."
 # Ensure no one can use my local dev services on the network
 sudo pacman -S ufw --noconfirm
 sudo ufw default deny incoming
+sudo ufw enable
 sudo systemctl enable ufw
-sudo ufw status
 
 ###########
 ### Utility
@@ -96,7 +97,7 @@ sudo ufw status
 echo "Installing utility packages..."
 sudo pacman -S alacritty --noconfirm
 sudo pacman -S nsxiv --noconfirm
-sudo pacman -S keepass --noconfirm
+sudo pacman -S keepassxc --noconfirm
 sudo pacman -S veracrypt --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S fzf --noconfirm
@@ -106,7 +107,13 @@ sudo pacman -S brightnessctl --noconfirm
 sudo pacman -S gnome-keyring --noconfirm
 sudo pacman -S seahorse --noconfirm
 sudo pacman -S ifuse --noconfirm
-sudo pacman -S neofetch --noconfirm
+sudo pacman -S macchina --noconfirm
+sudo pacman -S yazi --noconfirm
+sudo pacman -S fuzzel --noconfirm
+sudo pacman -S capitaine-cursors --noconfirm
+sudo pacman -S bluetui --noconfirm
+sudo pacman -S impala --noconfirm
+
 echo "Done."
 
 #########
@@ -156,17 +163,16 @@ sudo pacman -S dotnet-sdk --noconfirm
 sudo pacman -S aspnet-runtime --noconfirm
 dotnet tool install --global dotnet-ef
 
-# PWSH
-dotnet tool install --global PowerShell
-
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | sh
+nvm install --lts
 
 # CLI
 sudo pacman -S yarn --noconfirm
 sudo pacman -S pnpm --noconfirm
 sudo pacman -S docker --noconfirm
 sudo pacman -S docker-buildx --noconfirm
+sudo pacman -S docker-compose --noconfirm
 sudo pacman -S nuget --noconfirm
 sudo pacman -S gitleaks --noconfirm
 
@@ -190,7 +196,4 @@ echo "Done."
 
 echo "Installing AUR packages..."
 sudo pacman -S yay --noconfirm
-yay -S visual-studio-code-bin --noconfirm
-yay -S postman-bin --noconfirm
-yay -S logseq-desktop-bin --noconfirm
 echo "Done."

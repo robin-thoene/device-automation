@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Update all packages installed using brew.
 brew upgrade

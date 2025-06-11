@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #################
 ### Initial setup
@@ -87,7 +87,7 @@ echo "Install kitty terminal and configure Dracula theme..."
 apt-get install -y kitty
 cd $git_dracula_dir && git clone https://github.com/dracula/kitty.git
 cp $git_dracula_dir/kitty/dracula.conf ~/.config/kitty/
-echo "include dracula.conf" >> ~/.config/kitty/kitty.conf
+echo "include dracula.conf" >>~/.config/kitty/kitty.conf
 echo "Done."
 
 #############################
