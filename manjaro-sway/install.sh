@@ -88,6 +88,7 @@ echo "Done."
 sudo pacman -S ufw --noconfirm
 sudo ufw default deny incoming
 sudo ufw enable
+sudo systemctl enable ufw
 
 ###########
 ### Utility
