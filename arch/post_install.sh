@@ -112,6 +112,7 @@ packages=(
 	dotnet-sdk
 	gitleaks
 	gitui
+	go
 	npm
 	nuget
 	pnpm

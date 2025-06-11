@@ -7,7 +7,7 @@ This is the (automated) setup process for creating a software developer machine 
 
 ## Status
 
-🟠 This setup is currently in development and should not be used on any production machine
+🟢 This setup is ready to be used
 
 ## Installation instructions
 
@@ -63,3 +63,5 @@ This script is meant to be run after you finalized the manual Arch install, but 
 ### 4. Secure boot
 
 Enable secure boot using [sbctl](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Assisted_process_with_sbctl)
+
+Note: It might be necessary when using the `sbctl verify` command to set `ESP_PATH=/boot/EFI`.
