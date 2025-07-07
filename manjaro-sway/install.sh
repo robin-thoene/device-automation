@@ -42,7 +42,7 @@ sudo pacman -S pkgconf --noconfirm
 sudo pacman -S intel-media-driver --noconfirm
 # Setup applications directory.
 mkdir -p ~/Applications
-sudo ln -s /home/robin/Applications /usr/bin
+sudo ln -s /home/robin/Applications/** /usr/bin
 # Remove clipboard history.
 sudo pacman -R cliphist --noconfirm
 echo "Done."

@@ -65,3 +65,10 @@ This script is meant to be run after you finalized the manual Arch install, but 
 Enable secure boot using [sbctl](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Assisted_process_with_sbctl)
 
 Note: It might be necessary when using the `sbctl verify` command to set `ESP_PATH=/boot/EFI`.
+
+### 5. Logseq
+
+Logseq is the only app needed that is not available with pacman. Therefore:
+
+- download the appimage [here](https://github.com/logseq/logseq)
+- create a desktop entry as described [here](https://wiki.archlinux.org/title/Desktop_entries)

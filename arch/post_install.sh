@@ -13,6 +13,7 @@ packages=(
 	base-devel
 	git
 	reflector
+	systemd-resolvconf
 	# Security
 	apparmor
 	keepassxc
@@ -27,6 +28,7 @@ packages=(
 	## Window managers or compositors
 	autotiling-rs
 	bluez
+	brightnessctl
 	capitaine-cursors
 	fuzzel
 	grim
@@ -56,6 +58,7 @@ packages=(
 	# Appearance
 	## Fonts
 	noto-fonts-emoji
+	ttf-font-awesome
 	ttf-jetbrains-mono
 	ttf-jetbrains-mono-nerd
 	ttf-roboto
@@ -74,6 +77,8 @@ packages=(
 	jq
 	macchina
 	nsxiv
+	openssh
+	playerctl
 	pulsemixer
 	ripgrep
 	unzip
@@ -124,6 +129,12 @@ packages=(
 sudo pacman -S ${packages[@]} --noconfirm --needed
 echo "[DONE] - Finished installing packages"
 
+############
+# Networking
+############
+
+sudo systemctl enable systemd-resolved.service
+
 ##########
 # Security
 ##########
@@ -160,7 +171,7 @@ echo "Done"
 echo "Installing AUR helper ..."
 git clone https://aur.archlinux.org/yay.git
 cd yay && makepkg -si
-cd .. && rm -rf yay
+cd ..
 echo "Done"
 
 echo "[DONE] - Configuring package managers"
@@ -220,7 +231,7 @@ echo "Done"
 # Setup applications directory.
 echo "Creating application dir ..."
 mkdir -p ~/Applications
-sudo ln -s /home/robin/Applications /usr/bin
+sudo ln -s /home/robin/Applications/** /usr/bin
 echo "Done"
 
 # Setup development tools
@@ -232,6 +243,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
 ## Rust
 rustup default stable
+cargo install --locked bacon
+cargo install cargo-edit
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
