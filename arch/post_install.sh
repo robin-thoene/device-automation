@@ -34,16 +34,24 @@ packages=(
 	grim
 	mako
 	qt5-wayland
+	qt6-wayland
 	slurp
+	waybar
+	xdg-desktop-portal
+	xdg-desktop-portal-gtk
+	xorg-xwayland
+	## sway
 	sway
 	swaybg
 	swayidle
 	swaylock
-	waybar
-	xdg-desktop-portal
-	xdg-desktop-portal-gtk
 	xdg-desktop-portal-wlr
-	xorg-xwayland
+	## hyprland
+	hypridle
+	hyprland
+	hyprlock
+	hyprpaper
+	xdg-desktop-portal-hyprland
 	## Display manager
 	lemurs
 	## User directories

@@ -15,6 +15,12 @@ sway_light_colors=$sway_conf_dir/theme/catppuccin-latte
 sway_dark_colors=$sway_conf_dir/theme/catppuccin-mocha
 sway_colors_conf=$sway_conf_dir/theme/colors
 
+# hyprland
+hyprland_conf_dir=~/.config/hypr
+hyprland_light_colors=$hyprland_conf_dir/themes/latte.conf
+hyprland_dark_colors=$hyprland_conf_dir/themes/mocha.conf
+hyprland_colors_conf=$hyprland_conf_dir/themes/colors.conf
+
 # waybar
 waybar_conf_dir=~/.config/waybar
 waybar_light_colors=$waybar_conf_dir/theme/catppuccin-latte.css
@@ -44,6 +50,7 @@ echo "$current"
 if [[ "$current" == "'prefer-dark'" ]]; then
 	ln -sf $alacritty_light_colors $alacritty_colors_conf
 	ln -sf $sway_light_colors $sway_colors_conf
+	ln -sf $hyprland_light_colors $hyprland_colors_conf
 	ln -sf $waybar_light_colors $waybar_colors_conf
 	ln -sf $fuzzel_light_colors $fuzzel_colors_conf
 	ln -sf $mako_light_colors $mako_colors_conf
@@ -53,6 +60,7 @@ if [[ "$current" == "'prefer-dark'" ]]; then
 else
 	ln -sf $alacritty_dark_colors $alacritty_colors_conf
 	ln -sf $sway_dark_colors $sway_colors_conf
+	ln -sf $hyprland_dark_colors $hyprland_colors_conf
 	ln -sf $waybar_dark_colors $waybar_colors_conf
 	ln -sf $fuzzel_dark_colors $fuzzel_colors_conf
 	ln -sf $mako_dark_colors $mako_colors_conf
