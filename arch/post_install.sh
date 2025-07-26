@@ -45,7 +45,6 @@ packages=(
 	swaybg
 	swayidle
 	swaylock
-	xdg-desktop-portal-wlr
 	## hyprland
 	hypridle
 	hyprland
@@ -95,6 +94,7 @@ packages=(
 	yazi
 	zathura
 	zathura-pdf-poppler
+	zip
 	## Office
 	libreoffice-still
 	texlive-basic
@@ -251,6 +251,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
 ## Rust
 rustup default stable
+cargo install --locked cargo-nextest
+cargo install --locked watchexec-cli
 cargo install --locked bacon
 cargo install cargo-edit
 ## Docker
