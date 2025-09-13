@@ -74,9 +74,11 @@ packages=(
 	tmux
 	# User applications
 	## utility
+	android-file-transfer
 	bluetui
 	fd
 	firefox
+	flac
 	fzf
 	htop
 	ifuse
@@ -85,10 +87,13 @@ packages=(
 	macchina
 	nsxiv
 	openssh
+	perl-image-exiftool
 	playerctl
 	pulsemixer
+	qt6-tools
 	ripgrep
 	unzip
+	whipper
 	wireguard-tools
 	wl-clipboard
 	yazi
@@ -116,6 +121,7 @@ packages=(
 	mgba-qt
 	steam
 	vlc
+	vlc-plugins-extra
 	## Development
 	aspnet-runtime
 	dbeaver
@@ -133,6 +139,9 @@ packages=(
 	tree-sitter-cli
 	mysql-workbench
 	yarn
+	# GrapheneOS (mobile)
+	android-tools
+	android-udev
 )
 sudo pacman -S ${packages[@]} --noconfirm --needed
 echo "[DONE] - Finished installing packages"
@@ -254,6 +263,7 @@ rustup default stable
 cargo install --locked cargo-nextest
 cargo install --locked watchexec-cli
 cargo install --locked bacon
+cargo install --locked cargo-deny
 cargo install cargo-edit
 ## Docker
 sudo systemctl enable docker
