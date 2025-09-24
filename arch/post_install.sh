@@ -76,6 +76,7 @@ packages=(
 	## utility
 	android-file-transfer
 	bluetui
+	exfatprogs
 	fd
 	firefox
 	flac
@@ -137,7 +138,6 @@ packages=(
 	pnpm
 	rustup
 	tree-sitter-cli
-	mysql-workbench
 	yarn
 	# GrapheneOS (mobile)
 	android-tools
