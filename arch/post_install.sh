@@ -86,6 +86,7 @@ packages=(
 	impala
 	jq
 	macchina
+	nmap
 	nsxiv
 	openssh
 	perl-image-exiftool
@@ -133,6 +134,7 @@ packages=(
 	gitleaks
 	gitui
 	go
+	hyperfine
 	npm
 	nuget
 	pnpm
