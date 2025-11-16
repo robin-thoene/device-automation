@@ -45,8 +45,6 @@ yazi_light_colors=$yazi_conf_dir/catppuccin-latte.toml
 yazi_dark_colors=$yazi_conf_dir/catppuccin-mocha.toml
 yazi_colors_conf=$yazi_conf_dir/theme.toml
 
-echo "$current"
-
 if [[ "$current" == "'prefer-dark'" ]]; then
 	ln -sf $alacritty_light_colors $alacritty_colors_conf
 	ln -sf $sway_light_colors $sway_colors_conf

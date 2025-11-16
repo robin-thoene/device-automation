@@ -1,13 +1,13 @@
 #!/bin/bash
 
 sudo passwd -l root
-echo "Disabled 'root' login"
+echo "disabled 'root' login"
 
 #####################
 # Installing packages
 #####################
 
-echo "[START] - Installing packages ..."
+echo "[START] - installing packages ..."
 packages=(
 	# Base
 	base-devel
@@ -146,7 +146,7 @@ packages=(
 	android-udev
 )
 sudo pacman -S ${packages[@]} --noconfirm --needed
-echo "[DONE] - Finished installing packages"
+echo "[DONE] - finished installing packages"
 
 ############
 # Networking
@@ -158,81 +158,81 @@ sudo systemctl enable systemd-resolved.service
 # Security
 ##########
 
-echo "[START] - Configuring security related settings ..."
+echo "[START] - configuring security related settings ..."
 
-echo "Setting up a firewall ..."
+echo "setting up a firewall ..."
 sudo ufw default deny incoming
 sudo ufw enable
 sudo systemctl enable ufw
-echo "Done"
+echo "done"
 
-echo "Setting up apparmor ..."
+echo "setting up apparmor ..."
 sudo systemctl enable apparmor
-read -p "Add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
+read -p "add apparmor kernel params: https://wiki.archlinux.org/title/AppArmor#Installation"
 sudo vim /boot/loader/entries/arch.conf
 sudo bootctl update
-echo "Generated updated boot conf"
-echo "Done"
+echo "generated updated boot conf"
+echo "done"
 
-echo "[DONE] - Configuring security"
+echo "[DONE] - configuring security"
 
 ####################
 # Package management
 ####################
 
-echo "[START] - Configuring package managers ..."
+echo "[START] - configuring package managers ..."
 
-echo "Setting up reflector ..."
+echo "setting up reflector ..."
 echo "--country Germany,France" | sudo tee -a /etc/xdg/reflector/reflector.conf
 sudo systemctl enable reflector.timer
-echo "Done"
+echo "done"
 
-echo "Installing AUR helper ..."
+echo "installing AUR helper ..."
 git clone https://aur.archlinux.org/yay.git
 cd yay && makepkg -si
 cd ..
-echo "Done"
+echo "done"
 
-echo "[DONE] - Configuring package managers"
+echo "[DONE] - configuring package managers"
 
 ###################
 # Setup environment
 ###################
 
-echo "[START] - Configuring environment ..."
+echo "[START] - configuring environment ..."
 
-echo "Enabling necessary services ..."
+echo "enabling necessary services ..."
 sudo systemctl enable bluetooth.service
 sudo systemctl enable lemurs.service
-echo "Done"
+echo "done"
 
 # This creates the standard user home directories
-echo "Creating home directories ..."
+echo "creating home directories ..."
 xdg-user-dirs-update
-echo "Done"
+echo "done"
 
 # Ensure that all locales are definitely set up
-echo "Generate locales ..."
+echo "generate locales ..."
 sudo locale-gen
-echo "Done"
+echo "done"
 
 # tmux plugin manager
-echo "Setting up plugin manager for tmux ..."
+echo "setting up plugin manager for tmux ..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo "Done"
+echo "done"
 
 # oh my zsh installation
 export ZDOTDIR=~/.config/zsh
-echo "Installing oh-my-zsh ..."
+echo "installing oh-my-zsh ..."
 if [ -d $ZDOTDIR/oh-my-zsh ]; then
 	echo "Oh My Zsh is already installed, skipping installation steps."
 else
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
-echo "Done"
+echo "done"
 
 # Clone the automation repository, containing helper shell scripts
-echo "Cloning device-automation repositories ..."
+echo "cloning device-automation repositories ..."
 git_user_name=robin-thoene
 git_user_dir=~/dev/$git_user_name
 git_automation_repo_name=device-automation
@@ -240,21 +240,21 @@ automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_n
 mkdir -p $git_user_dir
 git config --global credential.helper store
 cd $git_user_dir && git clone $automation_repo_git_url
-echo "Done"
+echo "done"
 
 # ensure all themes are set initially
-echo "Setting up application themes ..."
+echo "setting up application themes ..."
 $git_user_dir/$git_automation_repo_name/arch/theme_toggle.sh
-echo "Done"
+echo "done"
 
 # Setup applications directory.
-echo "Creating application dir ..."
+echo "creating application dir ..."
 mkdir -p ~/Applications
 sudo ln -s /home/robin/Applications/** /usr/bin
-echo "Done"
+echo "done"
 
 # Setup development tools
-echo "Setting up dev tools ..."
+echo "setting up dev tools ..."
 ## Dotnet
 dotnet tool install --global dotnet-ef
 ## NVM
@@ -270,6 +270,6 @@ cargo install cargo-edit
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
-echo "Done"
+echo "done"
 
-echo "[DONE] - Configuring environment"
+echo "[DONE] - configuring environment"
