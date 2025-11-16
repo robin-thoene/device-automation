@@ -28,7 +28,7 @@ The following steps describe certain options to pick or steps to take:
       3. use **ext4** for the **root** file system
       4. use **fat -F32** for **boot** file system
 2. Install essential packages
-   1. command: `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager iwd vim man-db man-pages texinfo lvm2`
+   1. command: `pacstrap -K /mnt base linux linux-firmware intel-ucode networkmanager iwd vi vim man-db man-pages texinfo lvm2`
 3. Initramfs
    1. edit the config using `vim /etc/mkinitcpio.conf`
    2. add **encrypt** and **lvm2** to the HOOKS as described [here](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_3)
