@@ -18,11 +18,12 @@ At the start is the official, manual Arch installation process as documented
 
 The following steps describe certain options to pick or steps to take:
 
-1. Partitioning
+1. Partitioning (ensure GPT scheme!)
+   1. format the disk if needed ([nvme example](https://wiki.archlinux.org/title/Solid_state_drive/Memory_cell_clearing#Common_method_with_blkdiscard))
    1. create the following **layout**
-      1. /boot = 1G
+      1. /boot = 1G (ensure that it is created as EFI partition!)
       2. / (root) = 100% of left space
-   2. setup **LVM on LUKS** as described [here](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+   1. setup **LVM on LUKS** as described [here](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
       1. use RAM size as **swap**
       2. use remaining space as **root**
       3. use **ext4** for the **root** file system
@@ -65,10 +66,12 @@ This script is meant to be run after you finalized the manual Arch install, but 
 Enable secure boot using [sbctl](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Assisted_process_with_sbctl)
 
 Note: It might be necessary when using the `sbctl verify` command to set `ESP_PATH=/boot/EFI`.
+Furthermore the framwork laptop specific files might need to be signed.
 
 ### 5. Logseq
 
 Logseq is the only app needed that is not available with pacman. Therefore:
 
-- download the appimage [here](https://github.com/logseq/logseq)
-- create a desktop entry as described [here](https://wiki.archlinux.org/title/Desktop_entries)
+1. download the appimage [here](https://github.com/logseq/logseq)
+2. make it executable
+3. move it to `~/Applications/Logseq-linux.AppImage`
