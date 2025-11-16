@@ -17,6 +17,9 @@ echo "Changed default shell to 'zsh'"
 echo -e "[device]\nwifi.backend=iwd" >>/etc/NetworkManager/conf.d/wifi_backend.conf
 echo "Set iwd as wifi backend for the NetworkManager"
 
+echo -e "[DriverQuirks]\nPowerSaveDisable=*" >>/etc/iwd/main.conf
+echo "Disabled wifi powersave globally"
+
 user_name=robin
 useradd -m -G wheel -s /bin/zsh $user_name
 echo "Created user '$user_name'"
