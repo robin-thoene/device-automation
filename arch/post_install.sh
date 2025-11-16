@@ -84,6 +84,7 @@ packages=(
 	htop
 	ifuse
 	impala
+	iw
 	jq
 	macchina
 	nmap
@@ -127,6 +128,9 @@ packages=(
 	## Development
 	aspnet-runtime
 	dbeaver
+	cargo-deny
+	cargo-edit
+	cargo-nextest
 	docker
 	docker-buildx
 	docker-compose
@@ -140,6 +144,7 @@ packages=(
 	pnpm
 	rustup
 	tree-sitter-cli
+	watchexec
 	yarn
 	# GrapheneOS (mobile)
 	android-tools
@@ -262,11 +267,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
 ## Rust
 rustup default stable
-cargo install --locked cargo-nextest
-cargo install --locked watchexec-cli
-cargo install --locked bacon
-cargo install --locked cargo-deny
-cargo install cargo-edit
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
