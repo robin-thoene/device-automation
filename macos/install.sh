@@ -124,6 +124,10 @@ dotnet tool install --global dotnet-outdated-tool
 brew install --cask font-jetbrains-mono-nerd-font
 brew install neovim
 brew install tmux
+# tmux plugin manager
+echo "setting up plugin manager for tmux ..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "done"
 
 # GUI Tools
 brew install --cask microsoft-azure-storage-explorer
