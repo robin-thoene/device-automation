@@ -107,36 +107,28 @@ echo "Done."
 echo "Installing development packages..."
 # CLI
 brew install --cask powershell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 # Install latest LTS version of node.
 nvm install --lts
 brew install yarn
 brew install docker
 brew install azure-cli
-brew install nuget
 brew install gitleaks
+brew install watchexec
+brew install gitui
 
 # SDK
 dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-outdated-tool
 
 # IDE / Editor
 brew install --cask font-jetbrains-mono-nerd-font
 brew install neovim
 
-# Tools
+# GUI Tools
 brew install --cask microsoft-azure-storage-explorer
-brew install --cask postman
 brew install --cask azure-data-studio
 brew install --cask redisinsight
-brew install gitui
-echo "Done."
-
-#########
-### Media
-#########
-
-echo "Installing media packages..."
-brew install --cask vlc
 echo "Done."
 
 ##############
@@ -144,4 +136,5 @@ echo "Done."
 ##############
 
 read -p "Get the dotfiles"
+read -p "Ensure the company mail is set in gitconfig if needed!"
 read -p "Set the default alacritty font to JetBrainsMono Nerd Font. Press enter to complete..."
