@@ -262,6 +262,7 @@ echo "done"
 echo "setting up dev tools ..."
 ## Dotnet
 dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-outdated-tool
 ## NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
