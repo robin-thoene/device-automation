@@ -94,7 +94,6 @@ echo "Done."
 
 echo "Installing utility packages..."
 brew install logitech-options
-brew install --cask alacritty
 brew install fzf
 brew install fd
 brew install ripgrep
@@ -137,4 +136,3 @@ echo "Done."
 
 read -p "Get the dotfiles"
 read -p "Ensure the company mail is set in gitconfig if needed!"
-read -p "Set the default alacritty font to JetBrainsMono Nerd Font. Press enter to complete..."
