@@ -123,6 +123,7 @@ dotnet tool install --global dotnet-outdated-tool
 # IDE / Editor
 brew install --cask font-jetbrains-mono-nerd-font
 brew install neovim
+brew install tmux
 
 # GUI Tools
 brew install --cask microsoft-azure-storage-explorer
