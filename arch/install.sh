@@ -17,6 +17,7 @@ echo "changed default shell to 'zsh'"
 echo -e "[device]\nwifi.backend=iwd" >>/etc/NetworkManager/conf.d/wifi_backend.conf
 echo "set iwd as wifi backend for the NetworkManager"
 
+touch /etc/iwd/main.conf
 echo -e "[DriverQuirks]\nPowerSaveDisable=*" >>/etc/iwd/main.conf
 echo "disabled wifi powersave globally"
 
