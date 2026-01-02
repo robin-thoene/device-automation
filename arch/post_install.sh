@@ -26,7 +26,6 @@ packages=(
 	mesa
 	vulkan-intel
 	## Window managers or compositors
-	autotiling-rs
 	bluez
 	brightnessctl
 	capitaine-cursors
@@ -40,11 +39,6 @@ packages=(
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
 	xorg-xwayland
-	## sway
-	sway
-	swaybg
-	swayidle
-	swaylock
 	## hyprland
 	hypridle
 	hyprland
@@ -76,6 +70,7 @@ packages=(
 	## utility
 	android-file-transfer
 	bluetui
+	dosfstools
 	exfatprogs
 	fd
 	firefox
@@ -243,7 +238,6 @@ git_user_dir=~/dev/$git_user_name
 git_automation_repo_name=device-automation
 automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
 mkdir -p $git_user_dir
-git config --global credential.helper store
 cd $git_user_dir && git clone $automation_repo_git_url
 echo "done"
 
@@ -268,6 +262,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
 ## Rust
 rustup default stable
+cargo install sqlx-cli
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin

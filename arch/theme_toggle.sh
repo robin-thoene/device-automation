@@ -9,12 +9,6 @@ alacritty_light_colors=$alacritty_conf_dir/catppuccin-latte.toml
 alacritty_dark_colors=$alacritty_conf_dir/catppuccin-mocha.toml
 alacritty_colors_conf=$alacritty_conf_dir/colors.toml
 
-# sway
-sway_conf_dir=~/.config/sway
-sway_light_colors=$sway_conf_dir/theme/catppuccin-latte
-sway_dark_colors=$sway_conf_dir/theme/catppuccin-mocha
-sway_colors_conf=$sway_conf_dir/theme/colors
-
 # hyprland
 hyprland_conf_dir=~/.config/hypr
 hyprland_light_colors=$hyprland_conf_dir/themes/latte.conf
@@ -47,7 +41,6 @@ yazi_colors_conf=$yazi_conf_dir/theme.toml
 
 if [[ "$current" == "'prefer-dark'" ]]; then
 	ln -sf $alacritty_light_colors $alacritty_colors_conf
-	ln -sf $sway_light_colors $sway_colors_conf
 	ln -sf $hyprland_light_colors $hyprland_colors_conf
 	ln -sf $waybar_light_colors $waybar_colors_conf
 	ln -sf $fuzzel_light_colors $fuzzel_colors_conf
@@ -57,7 +50,6 @@ if [[ "$current" == "'prefer-dark'" ]]; then
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
 else
 	ln -sf $alacritty_dark_colors $alacritty_colors_conf
-	ln -sf $sway_dark_colors $sway_colors_conf
 	ln -sf $hyprland_dark_colors $hyprland_colors_conf
 	ln -sf $waybar_dark_colors $waybar_colors_conf
 	ln -sf $fuzzel_dark_colors $fuzzel_colors_conf
@@ -68,4 +60,3 @@ else
 fi
 
 makoctl reload
-swaymsg reload
