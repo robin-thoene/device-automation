@@ -76,6 +76,7 @@ packages=(
 	## utility
 	android-file-transfer
 	bluetui
+	dosfstools
 	exfatprogs
 	fd
 	firefox
@@ -268,6 +269,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
 nvm install --lts
 ## Rust
 rustup default stable
+cargo install sqlx-cli
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
