@@ -40,11 +40,6 @@ packages=(
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
 	xorg-xwayland
-	## sway
-	sway
-	swaybg
-	swayidle
-	swaylock
 	## hyprland
 	hypridle
 	hyprland
