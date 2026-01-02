@@ -26,7 +26,6 @@ packages=(
 	mesa
 	vulkan-intel
 	## Window managers or compositors
-	autotiling-rs
 	bluez
 	brightnessctl
 	capitaine-cursors
@@ -239,7 +238,6 @@ git_user_dir=~/dev/$git_user_name
 git_automation_repo_name=device-automation
 automation_repo_git_url=https://github.com/$git_user_name/$git_automation_repo_name.git
 mkdir -p $git_user_dir
-git config --global credential.helper store
 cd $git_user_dir && git clone $automation_repo_git_url
 echo "done"
 
