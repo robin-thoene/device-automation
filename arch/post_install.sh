@@ -249,7 +249,6 @@ echo "done"
 # Setup applications directory.
 echo "creating application dir ..."
 mkdir -p ~/Applications
-sudo ln -s /home/robin/Applications/** /usr/bin
 echo "done"
 
 # Setup development tools
