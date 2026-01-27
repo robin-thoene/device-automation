@@ -93,6 +93,7 @@ packages=(
 	unzip
 	whipper
 	wireguard-tools
+	wireshark-qt
 	wl-clipboard
 	yazi
 	zathura
@@ -134,6 +135,7 @@ packages=(
 	gitui
 	go
 	hyperfine
+	mariadb
 	npm
 	nuget
 	pnpm
