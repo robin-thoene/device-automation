@@ -232,6 +232,9 @@ else
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
 echo "done"
+echo "installing fzf-tab plugin for oh-my-zsh ..."
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+echo "done"
 
 # Clone the automation repository, containing helper shell scripts
 echo "cloning device-automation repositories ..."
@@ -267,6 +270,8 @@ cargo install sqlx-cli
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
+# Wireshark permissions
+sudo usermod -a -G wireshark robin
 echo "done"
 
 echo "[DONE] - configuring environment"
