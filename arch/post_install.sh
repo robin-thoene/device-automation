@@ -81,9 +81,12 @@ packages=(
 	impala
 	iw
 	jq
+	ldns
+	lego
 	macchina
 	nmap
 	nsxiv
+	obs-studio
 	openssh
 	perl-image-exiftool
 	playerctl
