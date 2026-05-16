@@ -73,5 +73,6 @@ Furthermore the framwork laptop specific files might need to be signed.
 Logseq is the only app needed that is not available with pacman. Therefore:
 
 1. download the appimage [here](https://github.com/logseq/logseq)
-2. make it executable
-3. move it to `~/Applications/Logseq-linux.AppImage`
+2. verify the shasum
+3. make it executable
+4. move it to `~/Applications/Logseq-linux.AppImage`

@@ -81,9 +81,12 @@ packages=(
 	impala
 	iw
 	jq
+	ldns
+	lego
 	macchina
 	nmap
 	nsxiv
+	obs-studio
 	openssh
 	perl-image-exiftool
 	playerctl
@@ -93,6 +96,7 @@ packages=(
 	unzip
 	whipper
 	wireguard-tools
+	wireshark-qt
 	wl-clipboard
 	yazi
 	zathura
@@ -120,6 +124,7 @@ packages=(
 	steam
 	vlc
 	vlc-plugins-extra
+	vlc-plugin-ffmpeg
 	## Development
 	aspnet-runtime
 	dbeaver
@@ -134,6 +139,7 @@ packages=(
 	gitui
 	go
 	hyperfine
+	mariadb
 	npm
 	nuget
 	pnpm
@@ -230,6 +236,9 @@ else
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
 echo "done"
+echo "installing fzf-tab plugin for oh-my-zsh ..."
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+echo "done"
 
 # Clone the automation repository, containing helper shell scripts
 echo "cloning device-automation repositories ..."
@@ -256,15 +265,14 @@ echo "setting up dev tools ..."
 ## Dotnet
 dotnet tool install --global dotnet-ef
 dotnet tool install --global dotnet-outdated-tool
-## NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | sh
-nvm install --lts
 ## Rust
 rustup default stable
 cargo install sqlx-cli
 ## Docker
 sudo systemctl enable docker
 sudo usermod -a -G docker robin
+# Wireshark permissions
+sudo usermod -a -G wireshark robin
 echo "done"
 
 echo "[DONE] - configuring environment"
