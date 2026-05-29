@@ -262,9 +262,6 @@ echo "done"
 
 # Setup development tools
 echo "setting up dev tools ..."
-## Dotnet
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-outdated-tool
 ## Rust
 rustup default stable
 cargo install sqlx-cli

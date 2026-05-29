@@ -116,10 +116,6 @@ brew install gitleaks
 brew install watchexec
 brew install gitui
 
-# SDK
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-outdated-tool
-
 # IDE / Editor
 brew install --cask font-jetbrains-mono-nerd-font
 brew install neovim
